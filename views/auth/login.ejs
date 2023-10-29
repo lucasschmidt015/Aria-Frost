@@ -1,0 +1,19 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+    <div class="form_container">
+        <form class="center_container" action="/login" method="POST">
+            <h1>Login</h1>
+            <label>E-mail</label>
+            <input type="email" name="email" placeholder="Type your E-mail...">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Type your password...">
+            <a href="" id="fgt_password">Forgot password?</a>
+            <button type="submit">LOGIN</button>
+            <label class="center">Or sign up using</label>
+            <a class="sgu_btn" href="/signup">SIGN UP</a>
+        </form>
+    </div>
+
+<%- include('../includes/end.ejs') %>
