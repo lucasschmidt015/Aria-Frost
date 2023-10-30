@@ -14,3 +14,18 @@ html, body {
     margin: auto;
 }
 
+.error_container {
+    margin-top: 10px;
+    width: 100%;
+    height: 45px;
+    border-color: red;
+    background: rgb(255, 176, 176);
+    color: red;
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
+

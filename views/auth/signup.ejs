@@ -3,17 +3,43 @@
 </head>
 <body>
     <div class="form_container">
+        
         <form class="center_container" action="/signup" method="POST">
             <h1>Sign Up</h1>
             <label>Name</label>
-            <input type="text" name="name" class="bigger" placeholder="Type your name...">
+            <input 
+                type="text" 
+                name="name" 
+                class="bigger"  
+                placeholder="Type your name..." 
+                value="<%= oldInput.name %>">
             <label>E-mail</label>
-            <input type="email" name="email" class="bigger" placeholder="Type your E-mail...">
+            <input 
+                type="email" 
+                name="email" 
+                class="bigger" 
+                placeholder="Type your E-mail..." 
+                value="<%= oldInput.email %>">
             <label>Password</label>
-            <input type="password" name="password" class="bigger" placeholder="Type your password...">
+            <input 
+                type="password" 
+                name="password" 
+                class="bigger" 
+                placeholder="Type your password..." 
+                value="<%= oldInput.password %>">
             <label>Confirm your password</label>
-            <input type="password" name="password" class="bigger" placeholder="Type your password again...">
+            <input 
+                type="password" 
+                name="confirmPassword" 
+                class="bigger" 
+                placeholder="Type your password again..." 
+                value="<%= oldInput.confirmPassword %>">
             <button type="submit">SIGN UP</button>
+            <% if (errorMessage) { %>
+                <div class="error_container">
+                    <span><%= errorMessage %></span>
+                </div>
+            <% } %>
             <label class="center">Already has an account?</label>
             <a class="sgu_btn" href="/login">LOGIN</a>
         </form>
