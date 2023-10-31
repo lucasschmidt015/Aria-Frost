@@ -1,5 +1,6 @@
 const express = require('express');
 const { check, body } = require('express-validator');
+const isAuth = require('../middlewares/isAuth');
 
 //Controllers
 const authController = require('../controllers/auth');
@@ -43,5 +44,9 @@ router.post('/signup', [
         })
 
 ], authController.postSignUp);
+
+router.get('/accountConfirmationScreen', isAuth, authController.getAccountConfirmationScreen);
+
+router.get('/confirmAccount/:token', authController.getConfirmAccount);
 
 module.exports = router;

@@ -22,6 +22,7 @@ const store = new MongoDBStore({
     collection: 'sessions',
 })
 
+
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
@@ -34,6 +35,18 @@ app.use(session({
     saveUninitialized: false,
     store: store
 }))
+
+app.use((req, res, next) => {
+    if (!req.session.user) {
+        return next();
+    }
+    User.findById(req.session.user._id)
+    .then(user => {
+        req.user = user;
+        next();
+    })
+    .catch(err => console.log(err));
+})
 
 app.use(authRouter);
 

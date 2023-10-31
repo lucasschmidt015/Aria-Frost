@@ -1,7 +1,9 @@
-const User = require('../models/user');
-
 const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator')
+const cryptoGenerate = require('../util/cryptoGenerate');
+const sendEmail = require('../util/sendEmail');
+
+const User = require('../models/user');
 
 exports.getLogin = (req, res, next) => {
     res.render('auth/login', {
@@ -32,6 +34,7 @@ exports.postSignUp = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
     const confirmPassword = req.body.confirmPassword;
+    let passowordInHash;
 
     const errors = validationResult(req);
 
@@ -50,18 +53,38 @@ exports.postSignUp = (req, res, next) => {
 
     bcrypt.hash(password, 12)
     .then(hashedPassword => {
+        passowordInHash = hashedPassword;
+        return cryptoGenerate.createRandomToken()
+    })
+    .then(token => {
         const newUser = new User({
             name: name,
             email: email,
-            password: hashedPassword,
+            password: passowordInHash,
             verificated: false,
+            verificationToken: token,
+            verificationTokenExpiration: Date.now() +  300000
         });
         return newUser.save()
     })
-    .then(success => {
-        res.redirect('/login')
+    .then(user => {
+        req.session.user = user;
+        req.session.isLoggedIn = true;
+        sendEmail.sendNewUserEmail(user);
+        res.redirect('/accountConfirmationScreen')
     })
     .catch(err => {
         console.log(err);
     })
+}
+
+exports.getAccountConfirmationScreen = (req, res, next) => {
+    res.render('auth/accountConfirmation', {
+        pageTitle: 'Account Confirmation'
+    })
+}
+
+exports.getConfirmAccount = (req, res, next) => {
+    const token = req.params.token;
+    console.log(token);
 }

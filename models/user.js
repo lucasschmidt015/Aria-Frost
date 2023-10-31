@@ -18,6 +18,14 @@ const userSchema = new Schema({
     verificated: {
         type: Boolean,
         required: false,
+    },
+    verificationToken: {
+        type: String,
+        required: false
+    },
+    verificationTokenExpiration: {
+        type: Date,
+        required: false
     }
 });
 
