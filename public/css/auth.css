@@ -81,6 +81,42 @@
     transform: scale(1.02);
 }
 
+.cotainer_account_confirmation {
+    width: 100%;    
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #dddbdb;
+}
+
+.container_center_account_confirmation {
+    width: 50%;
+    height: 60%;
+    border: 1px solid #818181;
+    border-radius: 15px;
+    display: flex;
+    padding: 20px;
+    background-color: #dddbdb;
+}
+
+.white_container {
+    background-color: #FFF;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: black;
+}
+
+#purple{
+    color: #9b1cd8;
+}
+
 @media (max-width: 768px) {
     .center_container {
         padding: 25px;
