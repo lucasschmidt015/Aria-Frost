@@ -1,6 +1,7 @@
 const express = require('express');
 const { check, body } = require('express-validator');
 const isAuth = require('../middlewares/isAuth');
+const bcrypt = require('bcryptjs');
 
 //Controllers
 const authController = require('../controllers/auth');
@@ -68,5 +69,38 @@ router.post('/reset', [
 ], authController.postReset);
 
 router.get('/resetMessage', authController.getResetMessage);
+
+router.get('/passwordReset/:token', authController.getPasswordReset);
+
+router.post('/passwordReset', [
+    check('password')
+        .isLength({ min: 5 })
+        .withMessage('Please enter a password with least 5 characteres.')
+        .isAlphanumeric()
+        .withMessage('Please type a password with only numbers and text.')
+        .trim()
+        .custom((value, {req}) => {
+            return User.findOne({ passwordResetToken: req.body.token, passwordResetTokenExpiration: {$gt: Date.now()}})
+            .then(user => {
+                if (!user) {
+                    return Promise.reject('Something went wrong...');
+                }
+                return bcrypt.compare(value, user.password)
+                .then(doMetch => {
+                    if (doMetch) {
+                        return Promise.reject('You have to enter a different password than the last one.');
+                    }
+                })
+            })
+        }),
+    check('confirmPassword')
+        .trim()
+        .custom((value, { req }) => {
+            if (value !== req.body.password) {
+                throw new Error('Passwords have to match!')
+            }
+            return true;
+        })
+], authController.postPasswordReset);
 
 module.exports = router;

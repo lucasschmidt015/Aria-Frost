@@ -153,7 +153,7 @@ userSchema.methods.sendResetPasswordEmail = function(user, token) {
                                         <p>Hello,</p>
                                         <p>You are receiving this email because you requested a password reset for your account.</p>
                                         <p>To reset your password, click the link below:</p>
-                                        <p><a href="http://localhost:3000/resetPassword/${token}">Reset Password</a></p>
+                                        <p><a href="http://localhost:3000/passwordReset/${token}">Reset Password</a></p>
                                         <p>If you did not request this password reset, please ignore this email.</p>
                                         <p>Thank you!</p>
                                     </td>

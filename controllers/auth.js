@@ -220,3 +220,69 @@ exports.getResetMessage = (req, res, next) => {
         pageTitle: 'Confirm your E-Mail',
     })
 }
+
+exports.getPasswordReset = (req, res, next) => {
+    const token = req.params.token;
+
+    User.findOne({ passwordResetToken: token, passwordResetTokenExpiration: {$gt: Date.now()} })
+    .then(user => {
+        if (!user) {
+            return res.redirect('/login');
+        }
+
+        return res.render('auth/newPassword', {
+                pageTitle: 'New Password',
+                errorMessage: '',
+                oldInput: {
+                    password: '',
+                    confirmPassword: '',
+                },
+                token: token,
+                userId: user._id,
+            })
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
+exports.postPasswordReset = (req, res, next) => {
+    const token = req.body.token;
+    const userId = req.body.userId;
+    const password = req.body.password;
+    const confirmPassword = req.body.confirmPassword;
+    let user;
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.render('auth/newPassword', {
+            pageTitle: 'New Password',
+            errorMessage: errors.array()[0].msg,
+            oldInput: {
+                password: password,
+                confirmPassword: confirmPassword,
+            },
+            token: token,
+            userId: userId
+        })
+    }
+
+    User.findById(userId)
+    .then(userDoc => {
+        user = userDoc;
+        return bcrypt.hash(password, 12)
+    })
+    .then(hashedPassword => {
+        user.password = hashedPassword;
+        user.passwordResetToken = null;
+        user.passwordResetTokenExpiration = null;
+        return user.save()
+    })
+    .then(updatedUser => {
+        res.redirect('/login');
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
