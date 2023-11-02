@@ -7,6 +7,10 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const csrf = require('csurf');
 const { parsed: { MONGODB_URI } } = require('dotenv').config();
 
+//Middlewares
+const isAuth = require('./middlewares/isAuth');
+const isAccountValid = require('./middlewares/isAccountValid');
+
 //routes
 const authRouter = require('./routes/auth');
 
@@ -55,6 +59,13 @@ app.use((req, res, next) => {
         next();
     })
     .catch(err => console.log(err));
+})
+
+//Home page
+app.get('/', isAuth, isAccountValid, (req, res, next) => {
+    res.render('home', {
+        pageTitle: 'Chat App'
+    })
 })
 
 app.use(authRouter);
