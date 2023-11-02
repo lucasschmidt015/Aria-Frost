@@ -17,6 +17,10 @@
                 name="password" 
                 placeholder="Type your password..." 
                 value="<%= oldInput.password %>">
+            <input
+                type="hidden"
+                name="_csrf"
+                value="<%= csrfToken %>">
             <a href="/reset" id="fgt_password">Forgot password?</a>
             <button type="submit">LOGIN</button>
             <% if (errorMessage) { %>

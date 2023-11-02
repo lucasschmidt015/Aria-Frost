@@ -13,6 +13,11 @@
                 placeholder="Type your E-mail..." 
                 value="<%= oldInput.email %>">
 
+            <input
+                type="hidden"
+                name="_csrf"
+                value="<%= csrfToken %>">
+
             <% if (errorMessage) { %>
                 <div class="error_container">
                     <span><%= errorMessage %></span>
