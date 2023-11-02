@@ -58,4 +58,15 @@ router.get('/accountConfirmationScreen', isAuth, authController.getAccountConfir
 
 router.get('/confirmAccount/:token', authController.getConfirmAccount);
 
+router.get('/reset', authController.getReset);
+
+router.post('/reset', [
+    check('email')
+        .isEmail()
+        .withMessage('Please, enter a valid E-Mail address.')
+        .normalizeEmail()
+], authController.postReset);
+
+router.get('/resetMessage', authController.getResetMessage);
+
 module.exports = router;

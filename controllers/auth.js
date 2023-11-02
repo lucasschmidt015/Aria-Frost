@@ -113,7 +113,9 @@ exports.postSignUp = (req, res, next) => {
             password: passowordInHash,
             verificated: false,
             verificationToken: token,
-            verificationTokenExpiration: Date.now() +  300000
+            verificationTokenExpiration: Date.now() +  300000,
+            passwordResetToken: null,
+            passwordResetTokenExpiration: null,
         });
         return newUser.save()
     })
@@ -148,8 +150,73 @@ exports.getAccountConfirmationScreen = (req, res, next) => {
 
 exports.getConfirmAccount = (req, res, next) => {
     const token = req.params.token;
-    console.log(token);
+    User.findOne({verificationToken: token, verificationTokenExpiration: {$gt: Date.now()} })
+    .then(user => {
+        if (!user) {
+            throw new Error('Something went wrong');
+        }
+        user.verificated = true;
+        user.verificationToken = null;
+        user.verificationTokenExpiration = null;
+        return user.save();
+    })
+    .then(updatedUser => {
+        res.redirect('/');
+    })
+    .catch(err => {
+        console.log(err);
+    })
 }
 
-//Continuar com a logica de pegar o token e ativar o usuário
-//Precisa adicinar alguma logica para controlar se o usuário já está confirmado nas rotas protegidas.
+exports.getReset = (req, res, next) => {
+    res.render('auth/reset', {
+        pageTitle: 'Password Reset',
+        errorMessage: '',
+        oldInput: {
+            email: ''
+        }
+    })
+}
+
+exports.postReset = (req, res, next) => {
+
+    const email = req.body.email;
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.render('auth/reset', {
+            pageTitle: 'Password Reset',
+            errorMessage: errors.array()[0].msg,
+            oldInput: {
+                email: email
+            }   
+        })
+    }
+
+    User.findOne({ email: email })
+    .then(user => {
+        if (!user) {
+            return res.render('auth/reset', {
+                pageTitle: 'Password Reset',
+                errorMessage: "We didn't find any users with this E-mail.",
+                oldInput: {
+                    email: email
+                }   
+            })  
+        }
+        user.updateResetPasswordToken(user)
+        .then(updatedUser => {
+            return res.redirect('/resetMessage');
+        })
+    })
+    .catch(err => console.log(err));
+
+}
+
+
+exports.getResetMessage = (req, res, next) => {
+    res.render('auth/resetMessage', {
+        pageTitle: 'Confirm your E-Mail',
+    })
+}

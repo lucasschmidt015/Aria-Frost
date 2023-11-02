@@ -23,6 +23,11 @@
     color: #555454;
 }
 
+.center_container p {
+    margin-top: 30px;
+    text-align: center;
+}
+
 .center_container label {
     margin-top: 35px;
 }

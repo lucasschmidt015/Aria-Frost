@@ -14,7 +14,6 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -41,6 +40,14 @@ const userSchema = new Schema({
     verificationTokenExpiration: {
         type: Date,
         required: false
+    },
+    passwordResetToken: {
+        type: String,
+        required: false
+    },
+    passwordResetTokenExpiration: {
+        type: Date,
+        required: false
     }
 });
 
@@ -61,7 +68,6 @@ userSchema.methods.updateUserConfirmationToken = function(user) {
                 reject(err);
             })    
         } else {
-            console.log('The token is still valid')
             resolve({});
         }
     })
@@ -93,6 +99,76 @@ userSchema.methods.sendNewUserEmail = function(user) {
                     </tr>
                 </table>
             </body>
+            </html>
+        `
+    })
+}
+
+userSchema.methods.updateResetPasswordToken = function(user) {
+    return new Promise((resolve, reject) => {
+        let newToken;
+        cryptoGenerate.createRandomToken()
+        .then(token => {
+            user.passwordResetToken = token;
+            user.passwordResetTokenExpiration = Date.now() +  3600000
+            newToken = token;
+            return user.save();
+        })
+        .then(updatedUser => {
+            updatedUser.sendResetPasswordEmail(updatedUser, newToken);
+            resolve(updatedUser);
+        })
+        .catch(err => {
+            reject(err);
+        })
+    });
+}
+
+userSchema.methods.sendResetPasswordEmail = function(user, token) {
+    transporter.sendMail({
+        to: user.email,
+        from: `ChatApp <${USER_EMAIL_SERVER}>`,
+        subject: 'Confirm your account.',
+        html: `
+            <!DOCTYPE html>
+            <html>
+            
+            <head>
+                <meta charset="UTF-8">
+                <title>Password Reset</title>
+            </head>
+            
+            <body>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f4f4f4">
+                    <tr>
+                        <td align="center">
+                            <table width="600" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff" style="border: 1px solid #e4e4e4;">
+                                <tr>
+                                    <td align="center" style="padding: 20px;">
+                                        <h1>Password Reset</h1>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 20px;">
+                                        <p>Hello,</p>
+                                        <p>You are receiving this email because you requested a password reset for your account.</p>
+                                        <p>To reset your password, click the link below:</p>
+                                        <p><a href="http://localhost:3000/resetPassword/${token}">Reset Password</a></p>
+                                        <p>If you did not request this password reset, please ignore this email.</p>
+                                        <p>Thank you!</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="background-color: #f4f4f4; padding: 20px;">
+                                        <p>&copy; 2023 Lucas Schmidt</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </body>
+            
             </html>
         `
     })
