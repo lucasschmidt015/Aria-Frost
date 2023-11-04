@@ -1,4 +1,26 @@
 .home_container {
     width: 100%;
     height: calc(100% - 60px);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.home_item {
+    width: 150px;
+    height: 150px;
+    background-color: #DEDEDE;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: ease 0.3s;
+}
+
+.home_item:hover {
+    transform: scale(1.02);
+}
+
+#newChatButton {
+    width: 135px;
+    height: 135px;
 }

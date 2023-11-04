@@ -1,0 +1,27 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/chat.css">
+</head>
+
+<body>
+    <%- include('../includes/navbar.ejs') %>
+    <div class="newChat_container">
+        <form class="NewChat_center" action="/newChat" method="POST">
+            <h2>NEW CHAT</h2>
+            <label for="title">Title</label>
+            <input type="text" name="title" placeholder="Type a title...">
+            <label for="description">Description</label>
+            <textarea type="text" name="description" placeholder="Type a description..."></textarea>
+            <label>Select an image</label>
+            <div class="custom-file-upload">
+                <label for="chatImage"><img id="imgChat" src="/src/default_img.jpg"></label>
+                <input type="file" id="chatImage" name="chatImage">
+            </div>
+            <input
+                type="hidden"
+                name="_csrf"
+                value="<%= csrfToken %>">
+            <button type="submit">CREATE CHAT</button>
+        </form>
+    </div>
+<script src="/js/newChat.js"></script>
+<%- include('../includes/end.ejs') %>

@@ -52,6 +52,11 @@ html, body {
     font-weight: bold;
 }
 
+.nav_bar span a{
+    text-decoration: none;
+    color: #FFF;
+}
+
 .nav_bar label {
     color: #FFF;
     margin-left: 15px;

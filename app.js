@@ -13,9 +13,11 @@ const isAccountValid = require('./middlewares/isAccountValid');
 
 //routes
 const authRouter = require('./routes/auth');
+const chatRouter = require('./routes/chat');
 
 //DB
 const User = require('./models/user');
+const Chat = require('./models/chat');
 
 //controllers
 const errorController = require('./controllers/error');
@@ -67,12 +69,24 @@ app.use((req, res, next) => {
 
 //Home page
 app.get('/', isAuth, isAccountValid, (req, res, next) => {
-    res.render('home', {
-        pageTitle: 'Chat App'
+    Chat.find()
+    .then(chats => {
+        console.log(chats);
+        res.render('home', {
+            pageTitle: 'Chat App',
+            chats
+        })
+    })
+    .catch(err => {
+        const error = new Error(err);
+        error.httpStatusCode = 500;
+        return next(error);
     })
 })
 
 app.use(authRouter);
+
+app.use(chatRouter);
 
 app.use('/500', errorController.get500);
 
