@@ -46,6 +46,7 @@ app.use(csrfProtection);
 
 app.use((req, res, next) => {
     res.locals.csrfToken = req.csrfToken();
+    res.locals.isLoggedIn = req.session.isLoggedIn;
     next();
 })
 
@@ -53,12 +54,15 @@ app.use((req, res, next) => {
     if (!req.session.user) {
         return next();
     }
+    
     User.findById(req.session.user._id)
     .then(user => {
         req.user = user;
         next();
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+        next(new Error(err))
+    });
 })
 
 //Home page
@@ -70,7 +74,16 @@ app.get('/', isAuth, isAccountValid, (req, res, next) => {
 
 app.use(authRouter);
 
+app.use('/500', errorController.get500);
+
 app.use(errorController.get404);
+
+app.use((error, req, res, next) => {
+    console.log(error);
+    res.status(500).render('500', {
+        pageTitle: 'Error'
+    })
+})
 
 mongoose.connect(MONGODB_URI)
 .then(result => {

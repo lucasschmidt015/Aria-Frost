@@ -60,10 +60,14 @@ exports.postLogin = (req, res, next) => {
             req.session.user = user;
 
             const nextPage = user.verificated ? '/' : '/accountConfirmationScreen';
-            res.redirect(nextPage);
+            return res.redirect(nextPage);
         })
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+        const error = new Error(err);
+        error.httpStatusCode = 500;
+        return next(error);
+    });
 }
 
 exports.getSignUp = (req, res, next) => {
@@ -126,7 +130,9 @@ exports.postSignUp = (req, res, next) => {
         res.redirect('/accountConfirmationScreen')
     })
     .catch(err => {
-        console.log(err);
+        const error = new Error(err);
+        error.httpStatusCode = 500;
+        return next(error);
     })
 }
 
@@ -144,7 +150,9 @@ exports.getAccountConfirmationScreen = (req, res, next) => {
         })
     })
     .catch(err => {
-        console.log(err);
+        const error = new Error(err);
+        error.httpStatusCode = 500;
+        return next(error);
     })
 }
 
@@ -164,7 +172,9 @@ exports.getConfirmAccount = (req, res, next) => {
         res.redirect('/');
     })
     .catch(err => {
-        console.log(err);
+        const error = new Error(err);
+        error.httpStatusCode = 500;
+        return next(error);
     })
 }
 
@@ -210,10 +220,13 @@ exports.postReset = (req, res, next) => {
             return res.redirect('/resetMessage');
         })
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+        const error = new Error(err);
+        error.httpStatusCode = 500;
+        return next(error);
+    });
 
 }
-
 
 exports.getResetMessage = (req, res, next) => {
     res.render('auth/resetMessage', {
@@ -242,7 +255,9 @@ exports.getPasswordReset = (req, res, next) => {
             })
     })
     .catch(err => {
-        console.log(err);
+        const error = new Error(err);
+        error.httpStatusCode = 500;
+        return next(error);
     })
 }
 
@@ -283,6 +298,8 @@ exports.postPasswordReset = (req, res, next) => {
         res.redirect('/login');
     })
     .catch(err => {
-        console.log(err);
+        const error = new Error(err);
+        error.httpStatusCode = 500;
+        return next(error);
     })
 }
