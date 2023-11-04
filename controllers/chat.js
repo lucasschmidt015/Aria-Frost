@@ -9,4 +9,8 @@ exports.getNewChat = (req, res, next) => {
 exports.postNewChat = (req, res, next) => {
     const title = req.body.title;
     const description = req.body.description;
+    console.log(title);
+    console.log(description);
+    const image = req.file;
+    console.log(image);
 }
