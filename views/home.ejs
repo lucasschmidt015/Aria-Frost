@@ -5,8 +5,26 @@
 <body>
     <%- include('includes/navbar.ejs') %>
     <div class="home_container">
-        <div class="home_item">
-            <a href="/newChat"><img id="newChatButton" src="/src/plus.png"></a>
+        <div class="chat_line">
+            <% let count = 1 %>
+
+            <div class="home_item">
+                <a href="/newChat"><img class="newChatButton" src="/src/plus.png"></a>
+            </div>
+
+            <% chats.forEach(chat => { %>
+                <div class="home_item">
+                    <a href="/newChat"><img class="newChatButton" src="<%= chat.imageName ? '/chat_img/' + chat.imageName : '/src/default_img.jpg' %>"></a>
+                </div>
+
+                <% if (count === 4) { %>
+                    </div>
+                    <div class="chat_line">
+                    <% count = 0 %>
+                <% } %>
+
+                <% count += 1; %>
+            <% }) %>
         </div>
     </div>
 

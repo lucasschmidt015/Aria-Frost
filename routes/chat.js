@@ -1,10 +1,8 @@
 const express = require('express');
-const multer = require('multer');
+const { check } = require('express-validator');
 
 const isAuth = require('../middlewares/isAuth');
 const isAccountValid = require('../middlewares/isAccountValid');
-
-const updload = multer({ dest: 'upload/' });
 
 const chatController = require('../controllers/chat');
 
@@ -12,6 +10,10 @@ const router = express.Router();
 
 router.get('/newChat',isAuth, isAccountValid, chatController.getNewChat);
 
-router.post('/newChat', isAuth, isAccountValid, chatController.postNewChat);
+router.post('/newChat', isAuth, isAccountValid, [
+    check('title')
+        .isLength({ min: 3})
+        .withMessage('You must enter a title with at least 3 characters.')
+], chatController.postNewChat);
 
 module.exports = router;

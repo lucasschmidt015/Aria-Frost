@@ -16,7 +16,7 @@ const chatSchema = new Schema({
         type: String,
         required: false
     },
-    imagePath: {
+    imageName: {
         type: String,
         required: false
     }
