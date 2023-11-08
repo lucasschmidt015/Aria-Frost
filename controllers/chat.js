@@ -21,7 +21,6 @@ exports.postNewChat = (req, res, next) => {
     const error = validationResult(req);
 
     if (!error.isEmpty()) {
-        console.log('We have an error');
         return res.render('chat/newChat', {
             pageTitle: 'New Chat',
             errorMessage: error.array()[0].msg,
@@ -50,3 +49,20 @@ exports.postNewChat = (req, res, next) => {
     })
 
 }
+
+exports.getChat = (req, res, next) => {
+    const chatId = req.params.chatId;
+
+    Chat.findById(chatId)
+    .then(chat => {
+        res.render('chat/chat', {
+            pageTitle: chat.name,
+            chat
+        })
+    })
+    .catch(err => {
+        const error = new Error(err);
+        error.httpStatusCode = 500;
+        return next(error);
+    })
+}   

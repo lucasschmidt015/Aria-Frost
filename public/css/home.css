@@ -12,7 +12,7 @@
     height: auto;
     display: flex;
     justify-content: space-around;
-    margin-bottom: 15px;
+    margin-bottom: 40px;
 }
 
 .home_item {
@@ -21,9 +21,15 @@
     background-color: #DEDEDE;
     border-radius: 15px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     transition: ease 0.3s;
+}
+
+.home_item p {
+    margin-top: 185px;
+    position: absolute;
 }
 
 .home_item:hover {
@@ -34,4 +40,6 @@
     width: 135px;
     height: 135px;
     border-radius: 15px;
+    object-fit: cover;
+    
 }

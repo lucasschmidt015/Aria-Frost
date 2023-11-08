@@ -14,13 +14,14 @@
 
             <% chats.forEach(chat => { %>
                 <div class="home_item">
-                    <a href="/newChat"><img class="newChatButton" src="<%= chat.imageName ? '/chat_img/' + chat.imageName : '/src/default_img.jpg' %>"></a>
+                    <a href="/chat/<%= chat._id %>"><img class="newChatButton" src="<%= chat.imageName ? '/chat_img/' + chat.imageName : '/src/default_img.jpg' %>"></a>
+                    <p><%= chat.name %></p>
                 </div>
 
                 <% if (count === 4) { %>
                     </div>
                     <div class="chat_line">
-                    <% count = 0 %>
+                    <% count = -1 %>
                 <% } %>
 
                 <% count += 1; %>
