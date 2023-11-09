@@ -59,8 +59,10 @@ exports.postLogin = (req, res, next) => {
             req.session.isLoggedIn = true;
             req.session.user = user;
 
-            const nextPage = user.verificated ? '/' : '/accountConfirmationScreen';
-            return res.redirect(nextPage);
+            req.session.save(err => {
+                const nextPage = user.verificated ? '/' : '/accountConfirmationScreen';
+                return res.redirect(nextPage);
+            })
         })
     })
     .catch(err => {

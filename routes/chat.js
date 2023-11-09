@@ -12,8 +12,8 @@ router.get('/newChat',isAuth, isAccountValid, chatController.getNewChat);
 
 router.post('/newChat', isAuth, isAccountValid, [
     check('title')
-        .isLength({ min: 3, max: 10})
-        .withMessage('The title must have a minimum of 3 and a maximum of 10 characters.')
+        .isLength({ min: 3, max: 20})
+        .withMessage('The title must have a minimum of 3 and a maximum of 20 characters.')
 ], chatController.postNewChat);
 
 router.get('/chat/:chatId', isAuth, isAccountValid, chatController.getChat);
