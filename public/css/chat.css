@@ -128,14 +128,15 @@
     margin-right: 30px;
 }
 
-.dropdown-chat img{
-    width: 35px;
-    height: 32px;
+.options-btn {
+    width: 34px;
+    height: 34px;
     cursor: pointer;
+    transition: ease 0.3s;
 }
 
-.dropdown-chat:hover .options-dropdown {
-    display: flex;
+.rotated {
+    transform: rotate(90deg);
 }
 
 .options-dropdown {

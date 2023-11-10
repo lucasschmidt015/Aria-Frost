@@ -12,11 +12,11 @@
             </div>
             <div class="chat-options-right-side">
                 <div class="dropdown-chat">
-                    <img src="/src/menu.png" alt="">
-                    <div class="options-dropdown">
+                    <img id="options-btn" class="options-btn" src="/src/menu.png" alt="">
+                    <div class="options-dropdown" id="dropdown-menu">
                         <a href="/">Invite People</a>
                         <a href="/">Manege People</a>
-                        <a href="/">Edit server</a>
+                        <a href="/editChat/<%= chat._id %>">Edit server</a>
                         <a href="/">Leave Server</a>
                     </div>
                 </div>
@@ -32,3 +32,4 @@
     </div>
 
 <%- include('../includes/end.ejs') %>
+<script src="/js/chat.js"></script>

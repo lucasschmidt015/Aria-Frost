@@ -16,6 +16,14 @@ router.post('/newChat', isAuth, isAccountValid, [
         .withMessage('The title must have a minimum of 3 and a maximum of 20 characters.')
 ], chatController.postNewChat);
 
+router.get('/editChat/:chatId', chatController.getEditChat);
+
+router.post('/editChat', [
+    check('title')
+        .isLength({ min: 3, max: 20})
+        .withMessage('The title must have a minimum of 3 and a maximum of 20 characters.')
+], chatController.postEditChat);
+
 router.get('/chat/:chatId', isAuth, isAccountValid, chatController.getChat);
 
 module.exports = router;

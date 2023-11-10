@@ -5,8 +5,8 @@
 <body>
     <%- include('../includes/navbar.ejs') %>
     <div class="newChat_container">
-        <form class="NewChat_center" action="/newChat" method="POST" enctype="multipart/form-data">
-            <h2>NEW CHAT</h2>
+        <form class="NewChat_center" action="<%= isEditing ? '/editChat' : '/newChat' %>" method="POST" enctype="multipart/form-data">
+            <h2><%= isEditing ? 'EDIT CHAT' : 'NEW CHAT' %></h2>
             <label for="title">Title</label>
             <input 
                 type="text" 
@@ -31,11 +31,15 @@
                     <span><%= errorMessage %></span>
                 </div>
             <% } %>
+            <input 
+                type="hidden" 
+                name="chatId" 
+                value="<%= oldInput.id %>">
             <input
                 type="hidden"
                 name="_csrf"
                 value="<%= csrfToken %>">
-            <button type="submit">CREATE CHAT</button>
+            <button type="submit"><%= isEditing ? 'EDIT CHAT' : 'CREATE CHAT' %></button>
         </form>
     </div>
 <script src="/js/newChat.js"></script>
