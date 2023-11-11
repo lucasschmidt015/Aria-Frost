@@ -28,4 +28,6 @@ router.get('/chat/:chatId', isAuth, isAccountValid, chatController.getChat);
 
 router.get('/deleteChat/:chatId', isAuth, isAccountValid, chatController.getDeleteChat);
 
+router.get('/getNewMember/:chatId', isAuth, isAccountValid, chatController.getNewMember);
+
 module.exports = router;

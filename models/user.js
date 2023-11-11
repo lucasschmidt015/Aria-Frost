@@ -1,89 +1,94 @@
-const mongoose = require('mongoose');
-const cryptoGenerate = require('../util/cryptoGenerate');
-const nodemailer = require('nodemailer');
-const { parsed: { USER_EMAIL_SERVER, PASS_EMAIL_SERVER } } = require('dotenv').config();
+const mongoose = require("mongoose");
+const cryptoGenerate = require("../util/cryptoGenerate");
+const nodemailer = require("nodemailer");
+const {
+  parsed: { USER_EMAIL_SERVER, PASS_EMAIL_SERVER },
+} = require("dotenv").config();
 
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: {
-        user: USER_EMAIL_SERVER,
-        pass: PASS_EMAIL_SERVER,
-    }
+  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  auth: {
+    user: USER_EMAIL_SERVER,
+    pass: PASS_EMAIL_SERVER,
+  },
 });
 
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    name: {
-        type: String,
-        required: true,
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  verificated: {
+    type: Boolean,
+    required: false,
+  },
+  verificationToken: {
+    type: String,
+    required: false,
+  },
+  verificationTokenExpiration: {
+    type: Date,
+    required: false,
+  },
+  passwordResetToken: {
+    type: String,
+    required: false,
+  },
+  passwordResetTokenExpiration: {
+    type: Date,
+    required: false,
+  },
+  chats: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Chat",
+      required: false,
     },
-    email: {
-        type: String,
-        required: true,
-    },
-    password: {
-        type: String,
-        required: true,
-    },
-    verificated: {
-        type: Boolean,
-        required: false,
-    },
-    verificationToken: {
-        type: String,
-        required: false
-    },
-    verificationTokenExpiration: {
-        type: Date,
-        required: false
-    },
-    passwordResetToken: {
-        type: String,
-        required: false
-    },
-    passwordResetTokenExpiration: {
-        type: Date,
-        required: false
-    },
-    chats: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Chat',
-        required: false,
-    }]
+  ],
 });
 
-userSchema.methods.updateUserConfirmationToken = function(user) {
-    return new Promise((resolve, reject) => {
-        if (user.verificationTokenExpiration < new Date()) {
-            cryptoGenerate.createRandomToken()
-            .then(token => {
-                user.verificationToken = token;
-                user.verificationTokenExpiration = Date.now() +  300000
-                return user.save()
-            })
-            .then(updatedUser => {
-                updatedUser.sendNewUserEmail(updatedUser);
-                resolve(updatedUser);
-            })
-            .catch(err => {
-                reject(err);
-            })    
-        } else {
-            resolve({});
-        }
-    })
-}
+userSchema.methods.updateUserConfirmationToken = function (user) {
+  return new Promise((resolve, reject) => {
+    if (user.verificationTokenExpiration < new Date()) {
+      cryptoGenerate
+        .createRandomToken()
+        .then((token) => {
+          user.verificationToken = token;
+          user.verificationTokenExpiration = Date.now() + 300000;
+          return user.save();
+        })
+        .then((updatedUser) => {
+          updatedUser.sendNewUserEmail(updatedUser);
+          resolve(updatedUser);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    } else {
+      resolve({});
+    }
+  });
+};
 
-userSchema.methods.sendNewUserEmail = function(user) {
-    transporter.sendMail({
-        to: user.email,
-        from: `ChatApp <${USER_EMAIL_SERVER}>`,
-        subject: 'Confirm your account.',
-        html: `
+userSchema.methods.sendNewUserEmail = function (user) {
+  transporter.sendMail({
+    to: user.email,
+    from: `ChatApp <${USER_EMAIL_SERVER}>`,
+    subject: "Confirm your account.",
+    html: `
             <!DOCTYPE html>
             <html lang="en">
             <head>
@@ -105,36 +110,37 @@ userSchema.methods.sendNewUserEmail = function(user) {
                 </table>
             </body>
             </html>
-        `
-    })
-}
+        `,
+  });
+};
 
-userSchema.methods.updateResetPasswordToken = function(user) {
-    return new Promise((resolve, reject) => {
-        let newToken;
-        cryptoGenerate.createRandomToken()
-        .then(token => {
-            user.passwordResetToken = token;
-            user.passwordResetTokenExpiration = Date.now() +  3600000
-            newToken = token;
-            return user.save();
-        })
-        .then(updatedUser => {
-            updatedUser.sendResetPasswordEmail(updatedUser, newToken);
-            resolve(updatedUser);
-        })
-        .catch(err => {
-            reject(err);
-        })
-    });
-}
+userSchema.methods.updateResetPasswordToken = function (user) {
+  return new Promise((resolve, reject) => {
+    let newToken;
+    cryptoGenerate
+      .createRandomToken()
+      .then((token) => {
+        user.passwordResetToken = token;
+        user.passwordResetTokenExpiration = Date.now() + 3600000;
+        newToken = token;
+        return user.save();
+      })
+      .then((updatedUser) => {
+        updatedUser.sendResetPasswordEmail(updatedUser, newToken);
+        resolve(updatedUser);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
 
-userSchema.methods.sendResetPasswordEmail = function(user, token) {
-    transporter.sendMail({
-        to: user.email,
-        from: `ChatApp <${USER_EMAIL_SERVER}>`,
-        subject: 'Confirm your account.',
-        html: `
+userSchema.methods.sendResetPasswordEmail = function (user, token) {
+  transporter.sendMail({
+    to: user.email,
+    from: `ChatApp <${USER_EMAIL_SERVER}>`,
+    subject: "Confirm your account.",
+    html: `
             <!DOCTYPE html>
             <html>
             
@@ -175,8 +181,8 @@ userSchema.methods.sendResetPasswordEmail = function(user, token) {
             </body>
             
             </html>
-        `
-    })
-}
+        `,
+  });
+};
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model("User", userSchema);

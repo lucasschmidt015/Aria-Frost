@@ -1,22 +1,37 @@
-const Chat = require('../models/chat');
-
-
+const Chat = require("../models/chat");
 
 /**
- * 
+ *
  * @param {OBjectId} chatId Pass here the chat id
- * @param {OBjectId} userId Pass here the user id
- * @returns An object with chat data 
+ * @param {UserObject} user Pass here the user id
+ * @returns An object with chat data
  */
-exports.findChatByChatIdAndUserId = (chatId, userId) => {
-    return Chat.findOne({ _id: chatId, ownerId: userId })
-}
+exports.findChatByChatIdAndUserId = async (chatId, user) => {
+  try {
+    const chat = await Chat.findOne({
+      $and: [
+        { _id: chatId },
+        { $or: [{ ownerId: user._id }, { _id: { $in: user.chats } }] },
+      ],
+    });
+    return chat;
+  } catch (err) {
+    throw err;
+  }
+};
 
 /**
- * 
- * @param {*} userId Pass here the user id
- * @returns Many objects with chat data 
+ *
+ * @param {UserObject} user Pass here the user id
+ * @returns Many objects with chat data
  */
-exports.findAllChatsByUserId = (userId) => {
-    return Chat.find({ ownerId: userId })
-}
+exports.findAllChatsByUserId = async (user) => {
+  try {
+    const chats = await Chat.find({
+      $or: [{ ownerId: user._id }, { _id: { $in: user.chats } }],
+    });
+    return chats;
+  } catch (err) {
+    throw err;
+  }
+};

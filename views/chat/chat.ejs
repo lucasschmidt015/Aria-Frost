@@ -13,8 +13,8 @@
             <div class="chat-options-right-side">
                 <div class="dropdown-chat">
                     <img id="options-btn" class="options-btn" src="/src/menu.png" alt="">
-                    <div class="options-dropdown" id="dropdown-menu">
-                        <a href="/">Manege People</a>
+                    <div class="options-dropdown" id="dropdown-menu" style="margin-top: <%= isOwner ? '252px' : '160px'%>;">
+                        <a id="manege-people-button">Manege People</a>
                         <% if (isOwner) { %>
                             <a href="/editChat/<%= chat._id %>">Edit Chat</a>
                             <a href="/deleteChat/<%= chat._id %>">Delete Chat</a>
@@ -32,16 +32,163 @@
             <button>Send</button>
         </div>
     </div>
-    <div class="manege-people">
+    <div class="manege-people" id="manege-people">
         <div class="manege-people-conteiner">
+            <img src="/src/close.png" alt="" id="close-btn">
             <div class="members-container">
-
+                <h1>Menege People</h1>
+                <div class="members">
+                    <div class="member-line">
+                        <div class="member-line-left">
+                            <img src="/src/User_Default.png" alt="name">
+                            <p>Lucas</p>
+                        </div>
+                        <div class="member-line-right">
+                            <% if (isOwner) { %>
+                                <button>Make Admin</button>
+                                <button>Remove</button>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="member-line">
+                        <div class="member-line-left">
+                            <img src="/src/User_Default.png" alt="name">
+                            <p>Carlos</p>
+                        </div>
+                        <div class="member-line-right">
+                            <% if (isOwner) { %>
+                                <button>Make Admin</button>
+                                <button>Remove</button>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="member-line">
+                        <div class="member-line-left">
+                            <img src="/src/User_Default.png" alt="name">
+                            <p>Geovane</p>
+                        </div>
+                        <div class="member-line-right">
+                            <% if (isOwner) { %>
+                                <button>Make Admin</button>
+                                <button>Remove</button>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="member-line">
+                        <div class="member-line-left">
+                            <img src="/src/User_Default.png" alt="name">
+                            <p>Luciano</p>
+                        </div>
+                        <div class="member-line-right">
+                            <% if (isOwner) { %>
+                                <button>Make Admin</button>
+                                <button>Remove</button>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="member-line">
+                        <div class="member-line-left">
+                            <img src="/src/User_Default.png" alt="name">
+                            <p>Manrique</p>
+                        </div>
+                        <div class="member-line-right">
+                            <% if (isOwner) { %>
+                                <button>Make Admin</button>
+                                <button>Remove</button>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="member-line">
+                        <div class="member-line-left">
+                            <img src="/src/User_Default.png" alt="name">
+                            <p>Jaqi</p>
+                        </div>
+                        <div class="member-line-right">
+                            <% if (isOwner) { %>
+                                <button>Make Admin</button>
+                                <button>Remove</button>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="member-line">
+                        <div class="member-line-left">
+                            <img src="/src/User_Default.png" alt="name">
+                            <p>Horshark</p>
+                        </div>
+                        <div class="member-line-right">
+                            <% if (isOwner) { %>
+                                <button>Make Admin</button>
+                                <button>Remove</button>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="member-line">
+                        <div class="member-line-left">
+                            <img src="/src/User_Default.png" alt="name">
+                            <p>Kanna</p>
+                        </div>
+                        <div class="member-line-right">
+                            <% if (isOwner) { %>
+                                <button>Make Admin</button>
+                                <button>Remove</button>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="member-line">
+                        <div class="member-line-left">
+                            <img src="/src/User_Default.png" alt="name">
+                            <p>Pedro</p>
+                        </div>
+                        <div class="member-line-right">
+                            <% if (isOwner) { %>
+                                <button>Make Admin</button>
+                                <button>Remove</button>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="member-line">
+                        <div class="member-line-left">
+                            <img src="/src/User_Default.png" alt="name">
+                            <p>Lucas Anjos</p>
+                        </div>
+                        <div class="member-line-right">
+                            <% if (isOwner) { %>
+                                <button>Make Admin</button>
+                                <button>Remove</button>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="member-line">
+                        <div class="member-line-left">
+                            <img src="/src/User_Default.png" alt="name">
+                            <p>Adriel</p>
+                        </div>
+                        <div class="member-line-right">
+                            <% if (isOwner) { %>
+                                <button>Make Admin</button>
+                                <button>Remove</button>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="member-line">
+                        <div class="member-line-left">
+                            <img src="/src/User_Default.png" alt="name">
+                            <p>Hella</p>
+                        </div>
+                        <div class="member-line-right">
+                            <% if (isOwner) { %>
+                                <button>Make Admin</button>
+                                <button>Remove</button>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="invite-container">
                 <label>Copy the link to the chat and share it with your friends.</label>
                 <div>
-                    <input type="text" value="http://localhost:3000/getNewMember/<%= chat._id %>" readonly>
-                    <button>Copy Link</button>
+                    <input type="text" id="chatLink" value="http://localhost:3000/getNewMember/<%= chat._id %>" readonly>
+                    <button id="copyLinkBtn">Copy Link</button>
                 </div>
             </div>
         </div>
