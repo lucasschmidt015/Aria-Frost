@@ -26,4 +26,6 @@ router.post('/editChat', [
 
 router.get('/chat/:chatId', isAuth, isAccountValid, chatController.getChat);
 
+router.get('/deleteChat/:chatId', isAuth, isAccountValid, chatController.getDeleteChat);
+
 module.exports = router;

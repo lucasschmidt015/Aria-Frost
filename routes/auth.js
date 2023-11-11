@@ -15,8 +15,7 @@ router.get('/login', authController.getLogin);
 router.post('/login', [
     check('email')
         .isEmail()
-        .withMessage('Please, enter a valid E-Mail address.')
-        .normalizeEmail(),
+        .withMessage('Please, enter a valid E-Mail address.'),
     check('password')
         .trim()
 ], authController.postLogin);
@@ -32,12 +31,12 @@ router.post('/signup', [
         .withMessage('Please enter a valid E-mail.')
         .custom((value, { req }) => {
             return User.findOne({ email: value }).then(userDoc => {
+                console.log(userDoc);
                 if (userDoc) {
                     return Promise.reject('E-Mail already exists, please pick a diffferent one.')
                 }
             })
-        })
-        .normalizeEmail(),
+        }),
     check('password')
         .isLength({ min: 5 })
         .withMessage('Please enter a password with least 5 characteres.')
@@ -65,7 +64,6 @@ router.post('/reset', [
     check('email')
         .isEmail()
         .withMessage('Please, enter a valid E-Mail address.')
-        .normalizeEmail()
 ], authController.postReset);
 
 router.get('/resetMessage', authController.getResetMessage);

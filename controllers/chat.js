@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const Chat = require('../models/chat');
+const findChat = require('../util/findChat');
 
 exports.getNewChat = (req, res, next) => {
     res.render('chat/newChat', {
@@ -58,7 +59,7 @@ exports.postNewChat = (req, res, next) => {
 exports.getEditChat = (req, res, next) => {
     const chatId = req.params.chatId;
 
-    Chat.findById(chatId)
+    findChat.findChatByChatIdAndUserId(chatId, req.user._id)
     .then(chat => {
         res.render('chat/newChat', {
             pageTitle: 'New Chat',
@@ -100,7 +101,7 @@ exports.postEditChat = (req, res, next) => {
                 isEditing: true,
             })
     }
-    Chat.findById(chatId)
+    findChat.findChatByChatIdAndUserId(chatId, req.user._id)
     .then(chat => {
         if (chat.ownerId.toString() !== req.user._id.toString()) {
             throw new Error("User doesn't metch")
@@ -134,10 +135,11 @@ exports.postEditChat = (req, res, next) => {
 exports.getChat = (req, res, next) => {
     const chatId = req.params.chatId;
 
-    Chat.findById(chatId)
+    findChat.findChatByChatIdAndUserId(chatId, req.user._id)
     .then(chat => {
         res.render('chat/chat', {
             pageTitle: chat.name,
+            isOwner: chat.ownerId.toString() === req.user._id.toString(),
             chat
         })
     })
@@ -147,3 +149,24 @@ exports.getChat = (req, res, next) => {
         return next(error);
     })
 }   
+
+
+exports.getDeleteChat = (req, res, next) => {
+    const chatId = req.params.chatId;
+
+    findChat.findChatByChatIdAndUserId(chatId, req.user._id)
+    .then(chat => {
+        return chat.deleteOne({ _id: chat.id })
+    })
+    .then(success => {
+        const dedBin = path.resolve(__dirname, '..');
+        fs.unlink(path.join(dedBin, 'public', 'chat_img', success.imageName), err => {
+            return res.redirect('/');
+        })
+    })
+    .catch(err => {
+        const error = new Error(err);
+        error.httpStatusCode = 500;
+        next(error);
+    })
+}

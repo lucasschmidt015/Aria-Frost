@@ -14,10 +14,12 @@
                 <div class="dropdown-chat">
                     <img id="options-btn" class="options-btn" src="/src/menu.png" alt="">
                     <div class="options-dropdown" id="dropdown-menu">
-                        <a href="/">Invite People</a>
                         <a href="/">Manege People</a>
-                        <a href="/editChat/<%= chat._id %>">Edit server</a>
-                        <a href="/">Leave Server</a>
+                        <% if (isOwner) { %>
+                            <a href="/editChat/<%= chat._id %>">Edit Chat</a>
+                            <a href="/deleteChat/<%= chat._id %>">Delete Chat</a>
+                        <% } %>
+                        <a href="/">Leave Chat</a>
                     </div>
                 </div>
                 

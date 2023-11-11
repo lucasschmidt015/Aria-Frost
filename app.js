@@ -18,10 +18,12 @@ const chatRouter = require('./routes/chat');
 
 //DB
 const User = require('./models/user');
-const Chat = require('./models/chat');
 
 //controllers
 const errorController = require('./controllers/error');
+
+//Utils
+const findChat = require('./util/findChat');
 
 const app = express();
 
@@ -88,7 +90,7 @@ app.use((req, res, next) => {
 
 //Home page
 app.get('/', isAuth, isAccountValid, (req, res, next) => {
-    Chat.find()
+    findChat.findAllChatsByUserId(req.user._id)
     .then(chats => {
         res.render('home', {
             pageTitle: 'Chat App',
