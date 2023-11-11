@@ -48,7 +48,12 @@ const userSchema = new Schema({
     passwordResetTokenExpiration: {
         type: Date,
         required: false
-    }
+    },
+    chats: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Chat',
+        required: false,
+    }]
 });
 
 userSchema.methods.updateUserConfirmationToken = function(user) {

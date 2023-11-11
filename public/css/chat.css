@@ -198,3 +198,63 @@
 .chat_input button:hover {
     transform: scale(1.02);
 }
+
+.manege-people {
+    background-color: #03030388;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manege-people-conteiner {
+    width: 548px;
+    height: 695px;
+    background-color: #FFF;
+    border-radius: 7px;
+    padding: 10px 15px;
+}
+
+.members-container {
+    width: 100%;
+    height: 85%;
+    box-sizing: border-box;
+}
+
+.invite-container {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.invite-container label{
+    margin-bottom: 10px;
+}
+
+.invite-container div input{
+    width: 80%;
+    border: none;
+    padding: 10px 10px;
+    background-color: #dad9d9;
+    border-radius: 7px;
+}
+
+.invite-container div button {
+    width: 15%;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 7px;
+    background-image: linear-gradient(to right, #3f77e5, #9b1cd8);
+    color: #FFF;
+    cursor: pointer;
+}
+
+.invite-container div button:hover {
+    transform: scale(1.03);
+}

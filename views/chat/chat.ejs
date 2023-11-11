@@ -32,6 +32,20 @@
             <button>Send</button>
         </div>
     </div>
+    <div class="manege-people">
+        <div class="manege-people-conteiner">
+            <div class="members-container">
+
+            </div>
+            <div class="invite-container">
+                <label>Copy the link to the chat and share it with your friends.</label>
+                <div>
+                    <input type="text" value="http://localhost:3000/getNewMember/<%= chat._id %>" readonly>
+                    <button>Copy Link</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <%- include('../includes/end.ejs') %>
 <script src="/js/chat.js"></script>
