@@ -1,33 +1,64 @@
-const express = require('express');
-const { check } = require('express-validator');
+const express = require("express");
+const { check } = require("express-validator");
 
-const isAuth = require('../middlewares/isAuth');
-const isAccountValid = require('../middlewares/isAccountValid');
+const isAuth = require("../middlewares/isAuth");
+const isAccountValid = require("../middlewares/isAccountValid");
 
-const chatController = require('../controllers/chat');
+const chatController = require("../controllers/chat");
 
 const router = express.Router();
 
-router.get('/newChat',isAuth, isAccountValid, chatController.getNewChat);
+router.get("/newChat", isAuth, isAccountValid, chatController.getNewChat);
 
-router.post('/newChat', isAuth, isAccountValid, [
-    check('title')
-        .isLength({ min: 3, max: 20})
-        .withMessage('The title must have a minimum of 3 and a maximum of 20 characters.')
-], chatController.postNewChat);
+router.post(
+  "/newChat",
+  isAuth,
+  isAccountValid,
+  [
+    check("title")
+      .isLength({ min: 3, max: 20 })
+      .withMessage(
+        "The title must have a minimum of 3 and a maximum of 20 characters."
+      ),
+  ],
+  chatController.postNewChat
+);
 
-router.get('/editChat/:chatId', chatController.getEditChat);
+router.get("/editChat/:chatId", chatController.getEditChat);
 
-router.post('/editChat', [
-    check('title')
-        .isLength({ min: 3, max: 20})
-        .withMessage('The title must have a minimum of 3 and a maximum of 20 characters.')
-], chatController.postEditChat);
+router.post(
+  "/editChat",
+  [
+    check("title")
+      .isLength({ min: 3, max: 20 })
+      .withMessage(
+        "The title must have a minimum of 3 and a maximum of 20 characters."
+      ),
+  ],
+  chatController.postEditChat
+);
 
-router.get('/chat/:chatId', isAuth, isAccountValid, chatController.getChat);
+router.get("/chat/:chatId", isAuth, isAccountValid, chatController.getChat);
 
-router.get('/deleteChat/:chatId', isAuth, isAccountValid, chatController.getDeleteChat);
+router.get(
+  "/deleteChat/:chatId",
+  isAuth,
+  isAccountValid,
+  chatController.getDeleteChat
+);
 
-router.get('/getNewMember/:chatId', isAuth, isAccountValid, chatController.getNewMember);
+router.get(
+  "/getNewMember/:chatId",
+  isAuth,
+  isAccountValid,
+  chatController.getNewMember
+);
+
+router.get(
+  "/getLeaveServer/:chatId",
+  isAuth,
+  isAccountValid,
+  chatController.getLeaveServer
+);
 
 module.exports = router;

@@ -174,7 +174,7 @@ exports.getNewMember = (req, res, next) => {
       const updatedchats = [...userchats, chat._id];
       user.chats = updatedchats;
       user.save().then((updatedUser) => {
-        return res.redirect(`/`);
+        return res.redirect(`/chat/${chatId}`);
       });
     })
     .catch((err) => {
@@ -200,6 +200,38 @@ exports.getDeleteChat = (req, res, next) => {
           return res.redirect("/");
         }
       );
+    })
+    .catch((err) => {
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      next(error);
+    });
+};
+
+exports.getLeaveServer = (req, res, next) => {
+  const chatId = req.params.chatId;
+  const user = req.user;
+
+  findChat
+    .findChatByChatIdAndUserId(chatId, user)
+    .then((chat) => {
+      if (!chat) {
+        throw new Error("Chat not found");
+      }
+
+      if (chat.ownerId.toString() === user._id.toString()) {
+        //In future updates, consider incorporating a notification message at this point to inform the user that they cannot leave a server for which they are the owner.
+        return res.redirect(`/chat/${chatId}`);
+      }
+
+      const userChats = user.chats;
+      const updatedUserChat = userChats.filter(
+        (c) => c._id.toString() !== chatId.toString()
+      );
+      user.chats = updatedUserChat;
+      user.save().then((success) => {
+        return res.redirect("/");
+      });
     })
     .catch((err) => {
       const error = new Error(err);
