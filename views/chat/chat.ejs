@@ -43,9 +43,12 @@
                             <div class="member-line-left">
                                 <img src="/src/User_Default.png" alt="name">
                                 <p><%= user.name %></p>
+                                <% if (user._id.toString() === chat.ownerId.toString()) { %>
+                                    <span>Admin</span>
+                                <% } %>
                             </div>
                             <div class="member-line-right">
-                                <% if (isOwner) { %>
+                                <% if (isOwner && user._id.toString() !== chat.ownerId.toString()) { %>
                                     <button>Make Admin</button>
                                     <button>Remove</button>
                                 <% } %>

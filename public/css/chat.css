@@ -278,6 +278,15 @@
     width: 40px;
 }
 
+.member-line-left span{
+    background-color: orange;
+    margin-left: 20px;
+    padding: 5px;
+    border-radius: 7px;
+    font-size: 12px;
+    color: #FFF;
+}
+
 .member-line-right {
     width: 50%;
     height: 100%;
