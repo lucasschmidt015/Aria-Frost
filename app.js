@@ -85,6 +85,10 @@ app.use(csrfProtection);
 app.use((req, res, next) => {
   res.locals.csrfToken = req.csrfToken();
   res.locals.isLoggedIn = req.session.isLoggedIn;
+  if (req.session.user) {
+    res.locals.userName = req.session.user.name;
+    res.locals.userId = req.session.user._id;
+  }
   next();
 });
 

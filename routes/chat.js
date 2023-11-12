@@ -61,4 +61,13 @@ router.get(
   chatController.getLeaveServer
 );
 
+router.post("/makeAdmin", isAuth, isAccountValid, chatController.postMakeAdmin);
+
+router.post(
+  "/removeMember",
+  isAuth,
+  isAccountValid,
+  chatController.postRemoveMember
+);
+
 module.exports = router;

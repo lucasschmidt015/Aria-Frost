@@ -49,8 +49,8 @@
                             </div>
                             <div class="member-line-right">
                                 <% if (isOwner && user._id.toString() !== chat.ownerId.toString()) { %>
-                                    <button>Make Admin</button>
-                                    <button>Remove</button>
+                                    <button onclick="makeAdmin('<%= user._id %>', '<%= chat._id %>', '<%= csrfToken %>')">Make Admin</button>
+                                    <button onclick="removePeople('<%= user._id %>', '<%= chat._id %>', '<%= csrfToken %>')">Remove</button>
                                 <% } %>
                             </div>
                         </div>

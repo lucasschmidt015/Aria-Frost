@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 const Chat = require("../models/chat");
+const User = require("../models/user");
 const findChat = require("../util/findChat");
 const findUserChat = require("../util/findUserChat");
 
@@ -240,6 +241,67 @@ exports.getLeaveServer = (req, res, next) => {
       user.save().then((success) => {
         return res.redirect("/");
       });
+    })
+    .catch((err) => {
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      next(error);
+    });
+};
+
+exports.postMakeAdmin = (req, res, next) => {
+  const userId = req.body.userId;
+  const chatId = req.body.chatId;
+
+  findChat
+    .findChatByChatIdAndUserId(chatId, req.user)
+    .then((chat) => {
+      chat.ownerId = userId;
+      return chat.save();
+    })
+    .then((updatedChat) => {
+      const user = req.user;
+      const userChats = user.chats;
+      userChats.push(updatedChat._id);
+      user.chats = userChats;
+      return user.save();
+    })
+    .then((userUpdated) => {
+      return User.findById(userId);
+    })
+    .then((newOwner) => {
+      const chatsNewOwner = newOwner.chats;
+      const updatedOwnerChats = chatsNewOwner.filter(
+        (e) => e.toString() !== chatId.toString()
+      );
+      newOwner.chats = updatedOwnerChats;
+      return newOwner.save();
+    })
+    .then((success) => {
+      res.redirect(`/chat/${chatId}`);
+    })
+    .catch((err) => {
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      next(error);
+    });
+};
+
+exports.postRemoveMember = (req, res, next) => {
+  const userId = req.body.userId;
+  const chatId = req.body.chatId;
+
+  User.findById(userId)
+    .then((user) => {
+      const userChats = user.chats;
+      const updatedChats = userChats.filter((c) => {
+        return c.toString() !== chatId.toString();
+      });
+      user.chats = updatedChats;
+      return user.save();
+    })
+    .then((success) => {
+      res.redirect(`/chat/${chatId}`);
     })
     .catch((err) => {
       const error = new Error(err);
