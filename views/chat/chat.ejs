@@ -38,150 +38,20 @@
             <div class="members-container">
                 <h1>Menege People</h1>
                 <div class="members">
-                    <div class="member-line">
-                        <div class="member-line-left">
-                            <img src="/src/User_Default.png" alt="name">
-                            <p>Lucas</p>
+                    <% users.forEach(user => { %>
+                        <div class="member-line">
+                            <div class="member-line-left">
+                                <img src="/src/User_Default.png" alt="name">
+                                <p><%= user.name %></p>
+                            </div>
+                            <div class="member-line-right">
+                                <% if (isOwner) { %>
+                                    <button>Make Admin</button>
+                                    <button>Remove</button>
+                                <% } %>
+                            </div>
                         </div>
-                        <div class="member-line-right">
-                            <% if (isOwner) { %>
-                                <button>Make Admin</button>
-                                <button>Remove</button>
-                            <% } %>
-                        </div>
-                    </div>
-                    <div class="member-line">
-                        <div class="member-line-left">
-                            <img src="/src/User_Default.png" alt="name">
-                            <p>Carlos</p>
-                        </div>
-                        <div class="member-line-right">
-                            <% if (isOwner) { %>
-                                <button>Make Admin</button>
-                                <button>Remove</button>
-                            <% } %>
-                        </div>
-                    </div>
-                    <div class="member-line">
-                        <div class="member-line-left">
-                            <img src="/src/User_Default.png" alt="name">
-                            <p>Geovane</p>
-                        </div>
-                        <div class="member-line-right">
-                            <% if (isOwner) { %>
-                                <button>Make Admin</button>
-                                <button>Remove</button>
-                            <% } %>
-                        </div>
-                    </div>
-                    <div class="member-line">
-                        <div class="member-line-left">
-                            <img src="/src/User_Default.png" alt="name">
-                            <p>Luciano</p>
-                        </div>
-                        <div class="member-line-right">
-                            <% if (isOwner) { %>
-                                <button>Make Admin</button>
-                                <button>Remove</button>
-                            <% } %>
-                        </div>
-                    </div>
-                    <div class="member-line">
-                        <div class="member-line-left">
-                            <img src="/src/User_Default.png" alt="name">
-                            <p>Manrique</p>
-                        </div>
-                        <div class="member-line-right">
-                            <% if (isOwner) { %>
-                                <button>Make Admin</button>
-                                <button>Remove</button>
-                            <% } %>
-                        </div>
-                    </div>
-                    <div class="member-line">
-                        <div class="member-line-left">
-                            <img src="/src/User_Default.png" alt="name">
-                            <p>Jaqi</p>
-                        </div>
-                        <div class="member-line-right">
-                            <% if (isOwner) { %>
-                                <button>Make Admin</button>
-                                <button>Remove</button>
-                            <% } %>
-                        </div>
-                    </div>
-                    <div class="member-line">
-                        <div class="member-line-left">
-                            <img src="/src/User_Default.png" alt="name">
-                            <p>Horshark</p>
-                        </div>
-                        <div class="member-line-right">
-                            <% if (isOwner) { %>
-                                <button>Make Admin</button>
-                                <button>Remove</button>
-                            <% } %>
-                        </div>
-                    </div>
-                    <div class="member-line">
-                        <div class="member-line-left">
-                            <img src="/src/User_Default.png" alt="name">
-                            <p>Kanna</p>
-                        </div>
-                        <div class="member-line-right">
-                            <% if (isOwner) { %>
-                                <button>Make Admin</button>
-                                <button>Remove</button>
-                            <% } %>
-                        </div>
-                    </div>
-                    <div class="member-line">
-                        <div class="member-line-left">
-                            <img src="/src/User_Default.png" alt="name">
-                            <p>Pedro</p>
-                        </div>
-                        <div class="member-line-right">
-                            <% if (isOwner) { %>
-                                <button>Make Admin</button>
-                                <button>Remove</button>
-                            <% } %>
-                        </div>
-                    </div>
-                    <div class="member-line">
-                        <div class="member-line-left">
-                            <img src="/src/User_Default.png" alt="name">
-                            <p>Lucas Anjos</p>
-                        </div>
-                        <div class="member-line-right">
-                            <% if (isOwner) { %>
-                                <button>Make Admin</button>
-                                <button>Remove</button>
-                            <% } %>
-                        </div>
-                    </div>
-                    <div class="member-line">
-                        <div class="member-line-left">
-                            <img src="/src/User_Default.png" alt="name">
-                            <p>Adriel</p>
-                        </div>
-                        <div class="member-line-right">
-                            <% if (isOwner) { %>
-                                <button>Make Admin</button>
-                                <button>Remove</button>
-                            <% } %>
-                        </div>
-                    </div>
-                    <div class="member-line">
-                        <div class="member-line-left">
-                            <img src="/src/User_Default.png" alt="name">
-                            <p>Hella</p>
-                        </div>
-                        <div class="member-line-right">
-                            <% if (isOwner) { %>
-                                <button>Make Admin</button>
-                                <button>Remove</button>
-                            <% } %>
-                        </div>
-                    </div>
+                    <% }) %>
                 </div>
             </div>
             <div class="invite-container">

@@ -4,6 +4,7 @@ const path = require("path");
 
 const Chat = require("../models/chat");
 const findChat = require("../util/findChat");
+const findUserChat = require("../util/findUserChat");
 
 exports.getNewChat = (req, res, next) => {
   res.render("chat/newChat", {
@@ -140,13 +141,20 @@ exports.postEditChat = (req, res, next) => {
 exports.getChat = (req, res, next) => {
   const chatId = req.params.chatId;
 
+  let chatData;
+
   findChat
     .findChatByChatIdAndUserId(chatId, req.user)
     .then((chat) => {
+      chatData = chat;
+      return findUserChat.findChatUsers(chat._id, chatData.ownerId);
+    })
+    .then((users) => {
       res.render("chat/chat", {
-        pageTitle: chat.name,
-        isOwner: chat.ownerId.toString() === req.user._id.toString(),
-        chat,
+        pageTitle: chatData.name,
+        isOwner: chatData.ownerId.toString() === req.user._id.toString(),
+        chat: chatData,
+        users,
       });
     })
     .catch((err) => {
