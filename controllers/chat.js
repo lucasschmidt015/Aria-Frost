@@ -103,7 +103,7 @@ exports.postEditChat = (req, res, next) => {
     });
   }
   findChat
-    .findChatByChatIdAndUserId(chatId, req.user)
+    .findChatByChatIdAndUserId(chatId, req.user, false)
     .then((chat) => {
       if (chat.ownerId.toString() !== req.user._id.toString()) {
         throw new Error("User doesn't metch");
@@ -188,7 +188,7 @@ exports.getDeleteChat = (req, res, next) => {
   const chatId = req.params.chatId;
 
   findChat
-    .findChatByChatIdAndUserId(chatId, req.user) // Aqui uma boa ideia é só liberar pro adm, precisa ajustar isso ainda
+    .findChatByChatIdAndUserId(chatId, req.user, false)
     .then((chat) => {
       return chat.deleteOne({ _id: chat.id });
     })

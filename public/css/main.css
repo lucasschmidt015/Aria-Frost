@@ -42,6 +42,12 @@ html, body {
     cursor: pointer;
 }
 
+.nav_bar img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .nav_bar img:hover {
     transform: scale(1.08);
 }
