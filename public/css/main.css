@@ -37,15 +37,14 @@ html, body {
 
 .nav_bar img {
     width: 40px;
+    height: 40px;
     border-radius: 50%;
     margin-left: 25px;
     cursor: pointer;
-}
-
-.nav_bar img {
     display: flex;
     justify-content: center;
     align-items: center;
+    object-fit: cover;
 }
 
 .nav_bar img:hover {
@@ -85,6 +84,82 @@ html, body {
     font-size: 15px;
 }
 
+.full_screen_container{
+    width: 100%;
+    height: calc(100% - 60px);
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_center_container {
+    height: 600px;
+    background-color: #D9D9D9;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 30px;
+}
+
+.form_center_container input{
+    width: 500px;
+    border: 0;
+    height: 40px;
+    padding: 0 15px 0 15px;
+    border-radius: 5px;
+}
+
+.form_center_container textarea {  
+    height: 70px;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 15px 0 15px;
+}
+
+.form_center_container h2{
+    text-align: center;
+}
+
+.form_center_container label {
+    margin-top: 35px;
+}
+
+.form_center_container button{
+    background-image: linear-gradient(to right, #3f77e5, #9b1cd8);
+    border: none;
+    padding: 13px;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #FFF;
+    font-weight: bold;
+    margin-top: 75px;
+    cursor: pointer;
+}
+
+.custom-file-upload{
+    margin-top: 15px;
+}
+
+
+.custom-file-upload label {
+    width: 500px;
+    height: 100px;
+    border-radius: 15px;
+}
+
+.custom-file-upload label img {
+    width: 530px;
+    height: 150px;
+    border-radius: 5px;
+    cursor: pointer;
+    object-fit: cover;
+}
+  
+.custom-file-upload input {
+    display: none; /* Oculta o input do tipo file */
+}
 
 @media (max-width: 768px) {
     .nav_bar_left {

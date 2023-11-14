@@ -1,0 +1,37 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/user.css">
+</head>
+
+<body>
+    <%- include('../includes/navbar.ejs') %>
+    <div class="full_screen_container">
+        <form class="form_center_container" method="POST" action="/editUserProfile" enctype="multipart/form-data">
+            <h2>User Profile</h2>
+            <label for="title">Name</label>
+            <input type="text" name="name" value="<%= errorMessage ? oldInput.name : user.name %>">
+            <label for="title">Profile Photo</label>
+            <div class="custom-file-upload">
+                <label for="chatImage"><img id="imgChat" src="/src/default_img.jpg"></label>
+                <input 
+                    type="file" 
+                    id="chatImage" 
+                    name="chatImage">
+            </div>
+            <% if (errorMessage) { %>
+                <div class="error_container">
+                    <span><%= errorMessage %></span>
+                </div>
+            <% } %>
+            <input
+                type="hidden"
+                name="_csrf"
+                value="<%= csrfToken %>">
+            <input
+                type="hidden"
+                name="userId"
+                value="<%= user._id %>">
+            <button type="submit">Update Profile</button>
+        </form>
+    </div>
+<script src="/js/newChat.js"></script>
+<%- include('../includes/end.ejs') %>

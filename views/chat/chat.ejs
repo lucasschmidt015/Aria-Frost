@@ -41,7 +41,8 @@
                     <% users.forEach(user => { %>
                         <div class="member-line">
                             <div class="member-line-left">
-                                <img src="/src/User_Default.png" alt="name">
+                                <img src="<%= user.imageName ? '/chat_img/' + user.imageName : '/src/User_Default.png' %>" alt="name">
+                                <!-- <img src="/src/User_Default.png" alt="name"> -->
                                 <p><%= user.name %></p>
                                 <% if (user._id.toString() === chat.ownerId.toString()) { %>
                                     <span>Admin</span>

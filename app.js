@@ -17,6 +17,7 @@ const isAccountValid = require("./middlewares/isAccountValid");
 //routes
 const authRouter = require("./routes/auth");
 const chatRouter = require("./routes/chat");
+const userRouter = require("./routes/user");
 
 //DB
 const User = require("./models/user");
@@ -88,6 +89,7 @@ app.use((req, res, next) => {
   if (req.session.user) {
     res.locals.userName = req.session.user.name;
     res.locals.userId = req.session.user._id;
+    res.locals.userImage = req.session.user.imageName;
   }
   next();
 });
@@ -127,6 +129,8 @@ app.get("/", isAuth, isAccountValid, (req, res, next) => {
 app.use(authRouter);
 
 app.use(chatRouter);
+
+app.use(userRouter);
 
 app.use("/500", errorController.get500);
 
