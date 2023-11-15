@@ -1,10 +1,26 @@
 <%- include('includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/about.css">
 </head>
 
 <body>
     <%- include('includes/navbar.ejs') %>
     <div class="full_screen_container">
-        <p>teste</p>
+        <div class="title_container">
+            <img src="/src/MyPhoto.png" alt="">
+            <div class="title_informations">
+                <h1>Lucas Torchelsen Schmidt</h1>
+                <p>Junior Software Developer</p>
+            </div>
+        </div>
+        <div class="text_container">
+            <p>Hello! A Computer Science student at the Federal University of the Southern Frontier, I'm currently based in Chapecó, SC, and have been working as a Junior Software Developer since January 2022. Passionate about technology, I'm dedicated to crafting innovative solutions and staying at the cutting edge of the field.</p>
+        </div>
+
+        <div class="buttons_container">
+            <a href="https://www.instagram.com/__schmidtlucas/" target="_blank"><img src="/src/Instagram.png" alt=""></a>
+            <a href="https://www.linkedin.com/in/lucas-schmidt-76a806212/" target="_blank"><img src="/src/Linkedin.png" alt=""></a>
+            <a href="https://github.com/lucasschmidt015" target="_blank"><img src="/src/GitHub.png" alt=""></a>
+        </div>
     </div>
 
 <%- include('includes/end.ejs') %>
