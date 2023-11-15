@@ -66,6 +66,7 @@ html, body {
     color: #FFF;
     margin-left: 15px;
     margin-right: 40px;
+    font-weight: bold;
 }
 
 
@@ -84,7 +85,16 @@ html, body {
     font-size: 15px;
 }
 
-.full_screen_container{
+.full_screen_container {
+    width: 100%;
+    height: calc(100% - 60px);
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.full_screen_container_center{
     width: 100%;
     height: calc(100% - 60px);
     padding: 20px;

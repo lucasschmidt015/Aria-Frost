@@ -4,7 +4,7 @@
 
 <body>
     <%- include('../includes/navbar.ejs') %>
-    <div class="full_screen_container">
+    <div class="full_screen_container_center">
         <form class="form_center_container" action="<%= isEditing ? '/editChat' : '/newChat' %>" method="POST" enctype="multipart/form-data">
             <h2><%= isEditing ? 'EDIT CHAT' : 'NEW CHAT' %></h2>
             <label for="title">Title</label>

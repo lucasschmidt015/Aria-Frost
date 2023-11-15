@@ -18,6 +18,7 @@ const isAccountValid = require("./middlewares/isAccountValid");
 const authRouter = require("./routes/auth");
 const chatRouter = require("./routes/chat");
 const userRouter = require("./routes/user");
+const simplePagesRouter = require("./routes/simplePages");
 
 //DB
 const User = require("./models/user");
@@ -131,6 +132,8 @@ app.use(authRouter);
 app.use(chatRouter);
 
 app.use(userRouter);
+
+app.use(simplePagesRouter);
 
 app.use("/500", errorController.get500);
 
