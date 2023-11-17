@@ -59,7 +59,9 @@ html, body {
 
 .nav_bar span a{
     text-decoration: none;
+    font-family: 'Dancing Script', cursive;
     color: #FFF;
+    font-size: 40px;
 }
 
 .nav_bar label {
