@@ -91,6 +91,15 @@ function makeAdmin(userId, chatId, csrfToken) {
 }
 //--------------------------------------------------------------------------------
 
+//onLoad-----------------------------------------------------------------------
+
+window.onload = () => {
+  const message_container = document.getElementById("allChats");
+  message_container.scrollTop = message_container.scrollHeight;
+};
+
+//--------------------------------------------------------------------------------
+
 function rotateIcon() {
   isImageRotated = !isImageRotated;
   var rotationDegree = isImageRotated ? 180 : 0;

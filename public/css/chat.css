@@ -98,64 +98,98 @@
     height: 93%;
     display: flex;
     flex-direction: column;
-    justify-content: end;
-    padding: 5px;
     box-sizing: border-box;
     overflow: auto;
 }
 
-.message_line {
+.message_line_left {
     width: 100%;
     display: flex;
-    align-items: center;
     margin-bottom: 10px; 
 }
 
-.message_line img{
+.message_line_left img{
     width: 40px;
     height: 40px;
     border-radius: 50%;
 }
 
-.gambia {
+.advance_line_left {
     width: 40px;
     height: 40px;
-
 }
 
-.message_area {
+.message_area_left {
     width: auto;    
-    background-color: #3f77e5;
+    background-color: #8d8d8d;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     padding: 10px;
     border-radius: 10px;
     color: #FFF;
     margin-left: 10px;
-}
-.message_area p{
-    font-size: 15px;
+    max-width: 40%;
 }
 
-.message_area span{
+.message_area_left p{
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.message_line_right {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    margin-bottom: 10px; 
+}
+
+.message_line_right img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.message_area_right {
+    width: auto;    
+    background-color: #3f77e5;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 10px;
+    color: #FFF;
+    margin-right: 10px;
+    max-width: 40%;
+}
+
+.message_area_right p{
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.advance_line_right {
+    width: 55px;
+    height: 45px;
+}
+
+.message_itself{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.message_itself p{
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.message_itself span{
     font-size: 12px;
     margin-left: 20px;
     vertical-align: bottom; 
 }
-
-/* .message_line p {
-    background-color: #3498db;
-    color: #ffffff; 
-    padding: 10px; 
-    border-radius: 10px;
-    margin: 0; 
-    max-width: 70%; 
-}
-
-.message_line span {
-    margin-left: 10px; 
-} */
 
 .chat_input {
     width: 100%;
