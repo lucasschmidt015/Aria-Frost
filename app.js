@@ -6,6 +6,8 @@ const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const multer = require("multer");
 const csrf = require("csurf");
+const http = require("http");
+const socketIO = require("socket.io");
 const {
   parsed: { MONGODB_URI },
 } = require("dotenv").config();
@@ -25,11 +27,14 @@ const User = require("./models/user");
 
 //controllers
 const errorController = require("./controllers/error");
+const chatController = require("./controllers/chat");
 
 //Utils
 const findChat = require("./util/findChat");
 
 const app = express();
+const server = http.createServer(app);
+const io = socketIO(server);
 
 const store = new MongoDBStore({
   uri: MONGODB_URI,
@@ -149,8 +154,26 @@ app.use((error, req, res, next) => {
 mongoose
   .connect(MONGODB_URI)
   .then((result) => {
-    app.listen(3000, () => {
+    server.listen(3000, () => {
       console.log("Server running");
     });
   })
   .catch((err) => console.log(err));
+
+const userToChatMap = {};
+
+io.on("connection", (socket) => {
+  socket.on("joinChat", (chatId) => {
+    socket.join(chatId);
+    userToChatMap[socket.id] = chatId;
+  });
+
+  socket.on("chat message", async (msg) => {
+    const returnMessage = await chatController.addNewMessage(msg);
+
+    const chatIdToSend = userToChatMap[socket.id];
+    io.to(chatIdToSend).emit("chat message", returnMessage);
+  });
+
+  socket.on("disconnect", () => {});
+});

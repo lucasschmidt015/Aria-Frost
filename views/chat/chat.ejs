@@ -28,160 +28,13 @@
     </div>
     <div class="chat_container">
         <div class="message_container" id="allChats">
-            <div class="message_line_left">
-                <img src="/src/User_Default.png" alt="">
-                <div class="message_area_left">
-                    <p>Lucas Schmidt</p>
-                    <div class="message_itself">
-                        <p>Hey! Have you ever studied about World War II?</p>
-                        <span>15:45</span>
-                    </div>
-                </div>
-            </div>
-            <div class="message_line_right">
-                <div class="message_area_right">
-                    <p>Silvio Santos</p>
-                    <div class="message_itself">
-                        <p>Yes, I find it fascinating. The impact on the world was enormous. What specific aspects are you interested in?</p>
-                        <span>15:46</span>
-                    </div>
-                </div>
-                <img src="/src/User_Default.png" alt="">
-            </div>
-            <div class="message_line_left">
-                <img src="/src/User_Default.png" alt="">
-                <div class="message_area_left">
-                    <p>Lucas Schmidt</p>
-                    <div class="message_itself">
-                        <p> I'm curious about the major events that led to the war. Can you give me a brief overview?</p>
-                        <span>15:47</span>
-                    </div>
-                </div>
-            </div>
-            <div class="message_line_right">
-                <div class="message_area_right">
-                    <p>Silvio Santos</p>
-                    <div class="message_itself">
-                        <p>Sure! The war started in 1939 when Germany invaded Poland. The Treaty of Versailles, economic instability, and Hitler's expansionist policies were key factors.</p>
-                        <span>15:48</span>
-                    </div>
-                </div>
-                <img src="/src/User_Default.png" alt="">
-            </div>
-            <div class="message_line_left">
-                <img src="/src/User_Default.png" alt="">
-                <div class="message_area_left">
-                    <p>Lucas Schmidt</p>
-                    <div class="message_itself">
-                        <p>That's intense. How did the Allies respond to the aggression?</p>
-                        <span>15:49</span>
-                    </div>
-                </div>
-            </div>
-            <div class="message_line_right">
-                <div class="message_area_right">
-                    <p>Silvio Santos</p>
-                    <div class="message_itself">
-                        <p>The Allies, including the UK, France, and later the U.S., formed a coalition to resist the Axis powers led by Germany, Italy, and Japan.</p>
-                        <span>15:50</span>
-                    </div>
-                </div>
-                <img src="/src/User_Default.png" alt="">
-            </div>
-            <div class="message_line_left">
-                <img src="/src/User_Default.png" alt="">
-                <div class="message_area_left">
-                    <p>Lucas Schmidt</p>
-                    <div class="message_itself">
-                        <p>What about the Pacific theater? How did things unfold there?</p>
-                        <span>15:51</span>
-                    </div>
-                </div>
-            </div>
-            <div class="message_line_right">
-                <div class="message_area_right">
-                    <p>Silvio Santos</p>
-                    <div class="message_itself">
-                        <p>The Pacific saw intense battles between the Allies and Japan. Notable events include Pearl Harbor and the island-hopping campaigns.</p>
-                        <span>15:52</span>
-                    </div>
-                </div>
-                <img src="/src/User_Default.png" alt="">
-            </div>
-            <div class="message_line_left">
-                <img src="/src/User_Default.png" alt="">
-                <div class="message_area_left">
-                    <p>Lucas Schmidt</p>
-                    <div class="message_itself">
-                        <p>Were there any significant turning points during the war?</p>
-                        <span>15:53</span>
-                    </div>
-                </div>
-            </div>
-            <div class="message_line_right">
-                <div class="message_area_right">
-                    <p>Silvio Santos</p>
-                    <div class="message_itself">
-                        <p>Definitely. Stalingrad, D-Day, and Midway were pivotal. They shifted the momentum in favor of the Allies.</p>
-                        <span>15:54</span>
-                    </div>
-                </div>
-                <img src="/src/User_Default.png" alt="">
-            </div>
-            <div class="message_line_left">
-                <img src="/src/User_Default.png" alt="">
-                <div class="message_area_left">
-                    <p>Lucas Schmidt</p>
-                    <div class="message_itself">
-                        <p>What was life like on the home front during the war?</p>
-                        <span>15:55</span>
-                    </div>
-                </div>
-            </div>
-            <div class="message_line_right">
-                <div class="message_area_right">
-                    <p>Silvio Santos</p>
-                    <div class="message_itself">
-                        <p>People endured rationing, contributed to war efforts, and faced the emotional toll of loved ones being away. It was a challenging time.</p>
-                        <span>15:56</span>
-                    </div>
-                </div>
-                <img src="/src/User_Default.png" alt="">
-            </div>
-            <div class="message_line_left">
-                <img src="/src/User_Default.png" alt="">
-                <div class="message_area_left">
-                    <p>Lucas Schmidt</p>
-                    <div class="message_itself">
-                        <p>Did the war have long-term consequences for the nations involved?</p>
-                        <span>15:57</span>
-                    </div>
-                </div>
-            </div>
-            <div class="message_line_right">
-                <div class="message_area_right">
-                    <p>Silvio Santos</p>
-                    <div class="message_itself">
-                        <p>Absolutely. It reshaped the geopolitical landscape, led to the creation of the United Nations, and set the stage for the Cold War.</p>
-                        <span>15:58</span>
-                    </div>
-                </div>
-                <img src="/src/User_Default.png" alt="">
-            </div>
-            <div class="message_line_left">
-                <img src="/src/User_Default.png" alt="">
-                <div class="message_area_left">
-                    <p>Lucas Schmidt</p>
-                    <div class="message_itself">
-                        <p>Thanks for sharing! It's eye-opening to learn about the complexities of World War II and its lasting impact.</p>
-                        <span>15:59</span>
-                    </div>
-                </div>
-            </div>
+            <input type="hidden" id="chatMessages" value="<%= messages %>">
         </div>
         <div class="chat_input">
-            <input type="text" name="message" placeholder="Type your message...">
-            <button>Send</button>
+            <input type="hidden" id="chatId" value="<%= chat._id %>">
+            <input type="hidden" id="userId" value="<%= loggedUser %>">
+            <input type="text" name="message" placeholder="Type your message..." id="messageInput">
+            <button id="sendMessageButtom">Send</button>
         </div>
     </div>
     <div class="manege-people" id="manege-people">
@@ -194,7 +47,6 @@
                         <div class="member-line">
                             <div class="member-line-left">
                                 <img src="<%= user.imageName ? '/chat_img/' + user.imageName : '/src/User_Default.png' %>" alt="name">
-                                <!-- <img src="/src/User_Default.png" alt="name"> -->
                                 <p><%= user.name %></p>
                                 <% if (user._id.toString() === chat.ownerId.toString()) { %>
                                     <span>Admin</span>

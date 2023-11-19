@@ -151,11 +151,24 @@ exports.getChat = (req, res, next) => {
       return findUserChat.findChatUsers(chat._id, chatData.ownerId);
     })
     .then((users) => {
+      const messages = chatData.messages.map((m) => ({
+        userId: m.userId.toString(),
+        userName: m.userName,
+        userImage: m.userImage,
+        message: m.message,
+        time: new Date(m.date).toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+        }),
+      }));
       res.render("chat/chat", {
         pageTitle: chatData.name,
         isOwner: chatData.ownerId.toString() === req.user._id.toString(),
         chat: chatData,
+        loggedUser: req.user._id,
         users,
+        messages: JSON.stringify(messages),
       });
     })
     .catch((err) => {
@@ -308,4 +321,39 @@ exports.postRemoveMember = (req, res, next) => {
       error.httpStatusCode = 500;
       next(error);
     });
+};
+
+exports.addNewMessage = async (msg) => {
+  try {
+    const chat = await Chat.findById(msg.chatId);
+    const messages = chat.messages;
+    const { name: userName, imageName: userImage } = await User.findById(
+      msg.userId
+    );
+    messages.push({
+      userId: msg.userId,
+      userName,
+      userImage,
+      message: msg.message,
+      date: msg.date,
+    });
+    chat.messages = messages;
+    await chat.save();
+
+    const formatedMessage = {
+      userId: msg.userId,
+      userName: userName,
+      userImage,
+      message: msg.message,
+      time: new Date(msg.date).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      }),
+    };
+
+    return formatedMessage;
+  } catch (err) {
+    console.log(err);
+  }
 };
