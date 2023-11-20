@@ -151,17 +151,22 @@ exports.getChat = (req, res, next) => {
       return findUserChat.findChatUsers(chat._id, chatData.ownerId);
     })
     .then((users) => {
-      const messages = chatData.messages.map((m) => ({
-        userId: m.userId.toString(),
-        userName: m.userName,
-        userImage: m.userImage,
-        message: m.message,
-        time: new Date(m.date).toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-          hour12: false,
-        }),
-      }));
+      const messages = chatData.messages
+        .sort((a, b) => {
+          return new Date(a.date) - new Date(b.date);
+        })
+        .map((m) => ({
+          userId: m.userId.toString(),
+          userName: m.userName,
+          userImage: m.userImage,
+          message: m.message,
+          time: new Date(m.date).toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+          }),
+        }));
+
       res.render("chat/chat", {
         pageTitle: chatData.name,
         isOwner: chatData.ownerId.toString() === req.user._id.toString(),

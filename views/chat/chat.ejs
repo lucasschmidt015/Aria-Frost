@@ -33,8 +33,8 @@
         <div class="chat_input">
             <input type="hidden" id="chatId" value="<%= chat._id %>">
             <input type="hidden" id="userId" value="<%= loggedUser %>">
-            <input type="text" name="message" placeholder="Type your message..." id="messageInput">
-            <button id="sendMessageButtom">Send</button>
+            <input type="text" name="message" placeholder="Type your message..." id="messageInput" onkeypress="onPressEnter(event)">
+            <button id="sendMessageButtom"><img src="/src/Send.png" alt=""></button>
         </div>
     </div>
     <div class="manege-people" id="manege-people">

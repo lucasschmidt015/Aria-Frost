@@ -118,7 +118,15 @@ const userId = document.getElementById("userId");
 
 socket.emit("joinChat", chatId.value);
 
-sendMessageButtom.addEventListener("click", () => {
+sendMessageButtom.addEventListener("click", emitMessage);
+
+function onPressEnter(event) {
+  if (event.keyCode === 13) {
+    emitMessage();
+  }
+}
+
+function emitMessage() {
   socket.emit("chat message", {
     userId: userId.value,
     chatId: chatId.value,
@@ -127,7 +135,7 @@ sendMessageButtom.addEventListener("click", () => {
   });
   messageInput.value = "";
   return false;
-});
+}
 
 socket.on("chat message", (msg) => {
   renderMessages([msg]);
@@ -156,7 +164,6 @@ function checkIftheUserChanges(userId) {
 
 function isLoggedUser(messageUserId) {
   const userId = document.getElementById("userId").value;
-  console.log(userId);
   return userId.toString() === messageUserId.toString();
 }
 

@@ -154,7 +154,7 @@ app.use((error, req, res, next) => {
 mongoose
   .connect(MONGODB_URI)
   .then((result) => {
-    server.listen(3000, () => {
+    server.listen(3000, "0.0.0.0", () => {
       console.log("Server running");
     });
   })

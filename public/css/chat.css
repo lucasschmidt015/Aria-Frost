@@ -206,6 +206,14 @@
     border: none;
     border-radius: 5px;
     padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat_input img{
+    width: 25px;
+    height: 25px;
 }
 
 .chat_input button {
