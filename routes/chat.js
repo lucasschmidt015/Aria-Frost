@@ -70,4 +70,6 @@ router.post(
   chatController.postRemoveMember
 );
 
+router.post("/findOldestMessages", chatController.findOldestMessages);
+
 module.exports = router;

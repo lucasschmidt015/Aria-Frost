@@ -143,7 +143,7 @@ exports.postEditChat = (req, res, next) => {
 exports.getChat = async (req, res, next) => {
   const chatId = req.params.chatId;
 
-  const paginationAmount = 20;
+  const paginationAmount = 40;
 
   try {
     const chat = await findChat.findChatByChatIdAndUserId(chatId, req.user);
@@ -180,6 +180,7 @@ exports.getChat = async (req, res, next) => {
       loggedUser: req.user._id,
       users,
       messages: JSON.stringify(formatedMessages),
+      paginationAmount,
     });
   } catch (err) {
     const error = new Error(err);
@@ -187,59 +188,6 @@ exports.getChat = async (req, res, next) => {
     return next(error);
   }
 };
-
-// exports.getChat = async (req, res, next) => {
-//   const chatId = req.params.chatId;
-
-//   let chatData;
-//   let userData;
-
-//   const paginationAmount = 20;
-
-//   findChat
-//     .findChatByChatIdAndUserId(chatId, req.user)
-//     .then(async (chat) => {
-//       chatData = chat;
-//       return findUserChat.findChatUsers(chat._id, chatData.ownerId);
-//     })
-//     .then(async (users) => {
-//       userData = users;
-//       return Message.find({ chatId: chatId }).limit(5);
-//     })
-//     .then(async (messages) => {
-//       let formatedMessages = messages;
-//       if (messages) {
-//         formatedMessages = messages
-//           .sort((a, b) => {
-//             return new Date(a.date) - new Date(b.date);
-//           })
-//           .map((m) => ({
-//             userId: m.userId.toString(),
-//             userName: m.userName,
-//             userImage: m.userImage,
-//             message: m.message,
-//             time: new Date(m.date).toLocaleTimeString([], {
-//               hour: "2-digit",
-//               minute: "2-digit",
-//               hour12: false,
-//             }),
-//           }));
-//       }
-//       res.render("chat/chat", {
-//         pageTitle: chatData.name,
-//         isOwner: chatData.ownerId.toString() === req.user._id.toString(),
-//         chat: chatData,
-//         loggedUser: req.user._id,
-//         users: userData,
-//         messages: JSON.stringify(messages),
-//       });
-//     })
-//     .catch((err) => {
-//       const error = new Error(err);
-//       error.httpStatusCode = 500;
-//       return next(error);
-//     });
-// };
 
 exports.getNewMember = (req, res, next) => {
   const chatId = req.params.chatId;
@@ -419,37 +367,6 @@ exports.addNewMessage = async (msg) => {
   }
 };
 
-// exports.addNewMessage = async (msg) => {
-//   try {
-//     const chat = await Chat.findById(msg.chatId);
-//     const messages = chat.messages;
-//     const { name: userName, imageName: userImage } = await User.findById(
-//       msg.userId
-//     );
-//     messages.push({
-//       userId: msg.userId,
-//       userName,
-//       userImage,
-//       message: msg.message,
-//       date: msg.date,
-//     });
-//     chat.messages = messages;
-//     await chat.save();
-
-//     const formatedMessage = {
-//       userId: msg.userId,
-//       userName: userName,
-//       userImage,
-//       message: msg.message,
-//       time: new Date(msg.date).toLocaleTimeString([], {
-//         hour: "2-digit",
-//         minute: "2-digit",
-//         hour12: false,
-//       }),
-//     };
-
-//     return formatedMessage;
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+exports.findOldestMessages = (req, res, next) => {
+  console.log("It works");
+};

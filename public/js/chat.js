@@ -94,8 +94,6 @@ function makeAdmin(userId, chatId, csrfToken) {
 //onLoad-----------------------------------------------------------------------
 
 window.onload = () => {
-  // const message_container = document.getElementById("allChats");
-  // message_container.scrollTop = message_container.scrollHeight;
   const chatMessages = document.getElementById("chatMessages");
   renderMessages(JSON.parse(chatMessages.value));
 };
@@ -247,3 +245,38 @@ function renderMessages(formattedMessages) {
   // Rolar para a parte inferior para exibir a última mensagem (opcional)
   messageContainer.scrollTop = messageContainer.scrollHeight;
 }
+
+//Pagination controll -----------------------------------------------
+const paginationAmount = parseInt(
+  document.getElementById("paginationAmount").value
+);
+
+let messageCount = paginationAmount;
+
+messageContainer.addEventListener("scroll", () => {
+  if (messageContainer.scrollTop === 0) {
+    //Here I have to make a requisition to retrive the oldest messages.
+    const body = new URLSearchParams({
+      chatId,
+      _csrf,
+    });
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: body,
+    };
+
+    fetch("http://localhost:3000/findOldestMessages", requestOptions)
+      .then((newMessages) => {
+        console.log(newMessages);
+        messageCount += paginationAmount;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+});
+
+//-------------------------------------------------------------------
