@@ -34,7 +34,6 @@ router.post(
       .withMessage("Please enter a valid E-mail.")
       .custom((value, { req }) => {
         return User.findOne({ email: value }).then((userDoc) => {
-          console.log(userDoc);
           if (userDoc) {
             return Promise.reject(
               "E-Mail already exists, please pick a diffferent one."

@@ -165,8 +165,10 @@ function isLoggedUser(messageUserId) {
   return userId.toString() === messageUserId.toString();
 }
 
-function createMessageElement(message) {
-  const userChanges = checkIftheUserChanges(message.userId);
+function createMessageElement(message, userChangesScroll = false) {
+  const userChanges = userChangesScroll
+    ? true
+    : checkIftheUserChanges(message.userId);
   const thisIsLoggedUser = isLoggedUser(message.userId);
 
   const messageLine = document.createElement("div");
@@ -232,18 +234,39 @@ function createMessageElement(message) {
   return messageLine;
 }
 
-function renderMessages(formattedMessages) {
-  // // Limpar a div antes de renderizar novamente (opcional)
-  // messageContainer.innerHTML = "";
+function renderMessages(formattedMessages, renderTop = false) {
+  const scrollTopBefore = messageContainer.scrollTop;
+  const scrollHeightBefore = messageContainer.scrollHeight;
 
-  // Adicionar cada mensagem à div
-  formattedMessages.forEach((message) => {
-    const messageElement = createMessageElement(message);
-    messageContainer.appendChild(messageElement);
-  });
+  let messageElement; // Tem algo de errado nessa nova logica, tá fazendo printar que o user mudou quando não deveria
 
-  // Rolar para a parte inferior para exibir a última mensagem (opcional)
-  messageContainer.scrollTop = messageContainer.scrollHeight;
+  for (I = 0; I < formattedMessages.length; I++) {
+    if (
+      I + 1 != formattedMessages.length &&
+      formattedMessages[I].userId.toString() ===
+        formattedMessages[I + 1].userId.toString()
+    ) {
+      messageElement = createMessageElement(formattedMessages[I]);
+    } else {
+      messageElement = createMessageElement(formattedMessages[I], true);
+    }
+    if (!renderTop) messageContainer.appendChild(messageElement);
+    else messageContainer.prepend(messageElement);
+  }
+  // formattedMessages.forEach((message) => {
+  //   messageElement = createMessageElement(message);
+  //   if (!renderTop) messageContainer.appendChild(messageElement);
+  //   else messageContainer.prepend(messageElement);
+  // });
+
+  const scrollHeightAfter = messageContainer.scrollHeight;
+
+  const diff = scrollHeightAfter - scrollHeightBefore;
+
+  if (!renderTop) messageContainer.scrollTop = messageContainer.scrollHeight;
+  else {
+    messageContainer.scrollTop = scrollTopBefore + diff;
+  }
 }
 
 //Pagination controll -----------------------------------------------
@@ -255,10 +278,11 @@ let messageCount = paginationAmount;
 
 messageContainer.addEventListener("scroll", () => {
   if (messageContainer.scrollTop === 0) {
-    //Here I have to make a requisition to retrive the oldest messages.
+    const _csrf = document.getElementById("csrfToken").value;
     const body = new URLSearchParams({
-      chatId,
+      chatId: chatId.value,
       _csrf,
+      messageCount,
     });
     const requestOptions = {
       method: "POST",
@@ -269,9 +293,15 @@ messageContainer.addEventListener("scroll", () => {
     };
 
     fetch("http://localhost:3000/findOldestMessages", requestOptions)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Something went wrong");
+        }
+        return response.json();
+      })
       .then((newMessages) => {
-        console.log(newMessages);
         messageCount += paginationAmount;
+        renderMessages(newMessages, true);
       })
       .catch((error) => {
         console.log(error);

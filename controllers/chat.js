@@ -8,6 +8,8 @@ const User = require("../models/user");
 const findChat = require("../util/findChat");
 const findUserChat = require("../util/findUserChat");
 
+const paginationAmount = 80;
+
 exports.getNewChat = (req, res, next) => {
   res.render("chat/newChat", {
     pageTitle: "New Chat",
@@ -142,8 +144,6 @@ exports.postEditChat = (req, res, next) => {
 
 exports.getChat = async (req, res, next) => {
   const chatId = req.params.chatId;
-
-  const paginationAmount = 40;
 
   try {
     const chat = await findChat.findChatByChatIdAndUserId(chatId, req.user);
@@ -367,6 +367,33 @@ exports.addNewMessage = async (msg) => {
   }
 };
 
-exports.findOldestMessages = (req, res, next) => {
-  console.log("It works");
+exports.findOldestMessages = async (req, res, next) => {
+  const messageCount = req.body.messageCount;
+  const chatId = req.body.chatId;
+  let formatedMessage;
+
+  try {
+    const messages = await Message.find({ chatId: chatId })
+      .sort({ date: -1 })
+      .limit(paginationAmount)
+      .skip(messageCount);
+
+    if (messages.length) {
+      formatedMessage = messages.map((m) => ({
+        userId: m.userId.toString(),
+        userName: m.userName,
+        userImage: m.userImage,
+        message: m.message,
+        time: new Date(m.date).toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+        }),
+      }));
+    }
+
+    return res.json(formatedMessage == undefined ? [] : formatedMessage);
+  } catch (err) {
+    console.log(err);
+  }
 };
