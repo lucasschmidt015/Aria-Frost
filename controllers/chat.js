@@ -8,7 +8,7 @@ const User = require("../models/user");
 const findChat = require("../util/findChat");
 const findUserChat = require("../util/findUserChat");
 
-const paginationAmount = 80;
+const paginationAmount = 20;
 
 exports.getNewChat = (req, res, next) => {
   res.render("chat/newChat", {

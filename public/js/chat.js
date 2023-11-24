@@ -165,10 +165,15 @@ function isLoggedUser(messageUserId) {
   return userId.toString() === messageUserId.toString();
 }
 
-function createMessageElement(message, userChangesScroll = false) {
-  const userChanges = userChangesScroll
-    ? true
-    : checkIftheUserChanges(message.userId);
+function createMessageElement(message, userHasChangedByScrooling) {
+  let userChanges;
+
+  if (userHasChangedByScrooling != undefined) {
+    userChanges = userHasChangedByScrooling;
+  } else {
+    userChanges = checkIftheUserChanges(message.userId);
+  }
+
   const thisIsLoggedUser = isLoggedUser(message.userId);
 
   const messageLine = document.createElement("div");
@@ -238,26 +243,28 @@ function renderMessages(formattedMessages, renderTop = false) {
   const scrollTopBefore = messageContainer.scrollTop;
   const scrollHeightBefore = messageContainer.scrollHeight;
 
-  let messageElement; // Tem algo de errado nessa nova logica, tá fazendo printar que o user mudou quando não deveria
+  let messageElement;
 
-  for (I = 0; I < formattedMessages.length; I++) {
-    if (
-      I + 1 != formattedMessages.length &&
-      formattedMessages[I].userId.toString() ===
-        formattedMessages[I + 1].userId.toString()
-    ) {
-      messageElement = createMessageElement(formattedMessages[I]);
-    } else {
-      messageElement = createMessageElement(formattedMessages[I], true);
+  for (let I = 0; I < formattedMessages.length; I++) {
+    let userHasChanged = undefined;
+
+    if (renderTop) {
+      if (formattedMessages[I + 1]) {
+        userHasChanged =
+          formattedMessages[I].userId.toString() !==
+          formattedMessages[I + 1].userId.toString();
+      } else if (formattedMessages[I - 1]) {
+        userHasChanged =
+          formattedMessages[I].userId.toString() !==
+          formattedMessages[I - 1].userId.toString();
+      }
     }
+
+    messageElement = createMessageElement(formattedMessages[I], userHasChanged);
+
     if (!renderTop) messageContainer.appendChild(messageElement);
     else messageContainer.prepend(messageElement);
   }
-  // formattedMessages.forEach((message) => {
-  //   messageElement = createMessageElement(message);
-  //   if (!renderTop) messageContainer.appendChild(messageElement);
-  //   else messageContainer.prepend(messageElement);
-  // });
 
   const scrollHeightAfter = messageContainer.scrollHeight;
 
