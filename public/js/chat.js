@@ -264,6 +264,17 @@ function renderMessages(formattedMessages, renderTop = false) {
 
     if (!renderTop) messageContainer.appendChild(messageElement);
     else messageContainer.prepend(messageElement);
+
+    //-------------------------------------------------
+    // const dateLine = document.createElement("div");
+    // dateLine.classList.add("message_date");
+
+    // const dateItself = document.createElement("p");
+    // dateItself.textContent = formattedMessages[I].time;
+    // dateLine.appendChild(dateItself);
+
+    // messageContainer.appendChild(dateLine);
+    //-------------------------------------------------
   }
 
   const scrollHeightAfter = messageContainer.scrollHeight;
