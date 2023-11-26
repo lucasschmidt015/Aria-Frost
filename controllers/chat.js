@@ -338,6 +338,10 @@ exports.postRemoveMember = (req, res, next) => {
 
 exports.addNewMessage = async (msg) => {
   try {
+    if (msg.message === "") {
+      throw new Error("Message is empty");
+    }
+
     const { name: userName, imageName: userImage } = await User.findById(
       msg.userId
     );

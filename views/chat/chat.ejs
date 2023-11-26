@@ -46,7 +46,7 @@
                 <h1>Menege People</h1>
                 <div class="members">
                     <% users.forEach(user => { %>
-                        <div class="member-line">
+                        <div class="member-line" id = "user_<%= user._id %>">
                             <div class="member-line-left">
                                 <img src="<%= user.imageName ? '/chat_img/' + user.imageName : '/src/User_Default.png' %>" alt="name">
                                 <p><%= user.name %></p>

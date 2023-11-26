@@ -62,10 +62,15 @@ function removePeople(userId, chatId, csrfToken) {
 
   fetch("http://localhost:3000/removeMember", requestOptions)
     .then((response) => {
-      window.location.href = response.url;
+      const userDiv = document.getElementById("user_" + userId);
+      if (userDiv) {
+        userDiv.remove();
+      }
+      showToast("User removal completed successfully.");
     })
     .catch((err) => {});
 }
+
 //---------------------------------------------------------------------------------
 
 //Make Admin-----------------------------------------------------------------------
@@ -85,7 +90,11 @@ function makeAdmin(userId, chatId, csrfToken) {
 
   fetch("http://localhost:3000/makeAdmin", requestOptions)
     .then((response) => {
-      window.location.href = response.url;
+      showToast("Admin updated");
+
+      setTimeout(() => {
+        window.location.href = response.url;
+      }, 5000);
     })
     .catch((err) => {});
 }
@@ -125,20 +134,47 @@ function onPressEnter(event) {
 }
 
 function emitMessage() {
-  socket.emit("chat message", {
-    userId: userId.value,
-    chatId: chatId.value,
-    message: messageInput.value,
-    date: Date.now(),
-  });
-  messageInput.value = "";
-  return false;
+  showToast("test");
+  if (messageInput.value !== "") {
+    socket.emit("chat message", {
+      userId: userId.value,
+      chatId: chatId.value,
+      message: messageInput.value,
+      date: Date.now(),
+    });
+    messageInput.value = "";
+    return false;
+  }
 }
 
 socket.on("chat message", (msg) => {
   renderMessages([msg]);
 });
 
+function showToast(message) {
+  ///<--------
+  // Swal.fire({
+  //   position: "top-end",
+  //   icon: "success",
+  //   title: "Your work has been saved",
+  //   showConfirmButton: false,
+  //   timer: 1500,
+  // });
+
+  Toastify({
+    text: message,
+    className: "success",
+    backgroundColor: "#4CAF50",
+    style: {
+      borderRadius: "7px",
+    },
+    duration: 5000,
+    close: true,
+    gravity: "top",
+    position: "right",
+    stopOnFocus: true,
+  }).showToast();
+}
 //--------------------------------------------------------------------------------
 
 function checkIftheUserChanges(userId) {
@@ -310,11 +346,8 @@ function formatToDDMMYYYY(dateString) {
 }
 
 function formatDateToPrint(dateString) {
-  console.log("date string ", dateString);
   const messageDate = new Date(dateString);
-  console.log("message date ", messageDate);
   const currentDate = new Date();
-  console.log("current date ", currentDate);
 
   if (
     messageDate.getDate() === currentDate.getDate() &&

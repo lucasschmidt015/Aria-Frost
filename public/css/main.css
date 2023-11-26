@@ -173,6 +173,7 @@ html, body {
     display: none; /* Oculta o input do tipo file */
 }
 
+
 @media (max-width: 768px) {
     .nav_bar_left {
         padding-left: 15px;
