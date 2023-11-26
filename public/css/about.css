@@ -8,6 +8,8 @@
 
 .title_container img{
     border-radius: 35px;
+    width: 180px;
+    height: 180px;
 }
 
 .title_informations {

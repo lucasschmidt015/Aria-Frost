@@ -195,11 +195,18 @@
 
 .message_date {
     width: 100%;
-    height: 10px;
-    background-color: #3f77e5;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.message_date p {
+    background-image: linear-gradient(to right, #3f77e5, #9b1cd8);
+    color: #FFF;
+    padding: 7px;
+    border-radius: 7px;
+    font-size: 14px;
 }
 
 .chat_input {

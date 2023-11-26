@@ -8,7 +8,7 @@ const User = require("../models/user");
 const findChat = require("../util/findChat");
 const findUserChat = require("../util/findUserChat");
 
-const paginationAmount = 20;
+const paginationAmount = 120;
 
 exports.getNewChat = (req, res, next) => {
   res.render("chat/newChat", {
@@ -165,6 +165,7 @@ exports.getChat = async (req, res, next) => {
           userName: m.userName,
           userImage: m.userImage,
           message: m.message,
+          date: m.date,
           time: new Date(m.date).toLocaleTimeString([], {
             hour: "2-digit",
             minute: "2-digit",
@@ -354,6 +355,7 @@ exports.addNewMessage = async (msg) => {
       userName,
       userImage,
       message: msg.message,
+      date: msg.date,
       time: new Date(msg.date).toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
@@ -384,6 +386,7 @@ exports.findOldestMessages = async (req, res, next) => {
         userName: m.userName,
         userImage: m.userImage,
         message: m.message,
+        date: m.date,
         time: new Date(m.date).toLocaleTimeString([], {
           hour: "2-digit",
           minute: "2-digit",
