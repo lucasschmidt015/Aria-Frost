@@ -20,6 +20,10 @@ const messageSchema = new Schema({
     type: String,
     required: true,
   },
+  firstMessageDay: {
+    type: Boolean,
+    required: true,
+  },
   message: {
     type: String,
     required: true,

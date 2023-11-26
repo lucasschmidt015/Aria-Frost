@@ -8,7 +8,7 @@ const User = require("../models/user");
 const findChat = require("../util/findChat");
 const findUserChat = require("../util/findUserChat");
 
-const paginationAmount = 120;
+const paginationAmount = 20;
 
 exports.getNewChat = (req, res, next) => {
   res.render("chat/newChat", {
@@ -164,6 +164,7 @@ exports.getChat = async (req, res, next) => {
           userId: m.userId.toString(),
           userName: m.userName,
           userImage: m.userImage,
+          firstMessageDay: m.firstMessageDay,
           message: m.message,
           date: m.date,
           time: new Date(m.date).toLocaleTimeString([], {
@@ -340,11 +341,15 @@ exports.addNewMessage = async (msg) => {
     const { name: userName, imageName: userImage } = await User.findById(
       msg.userId
     );
+    const areThereMoreMessagesForThisDate =
+      await checkIfThereIsMoreMessagensForThisDate(msg.chatId);
+
     const newMessage = new Message({
       userId: msg.userId,
       chatId: msg.chatId,
       userName,
       userImage,
+      firstMessageDay: !areThereMoreMessagesForThisDate,
       message: msg.message,
       date: msg.date,
     });
@@ -354,6 +359,7 @@ exports.addNewMessage = async (msg) => {
       userId: msg.userId,
       userName,
       userImage,
+      firstMessageDay: !areThereMoreMessagesForThisDate,
       message: msg.message,
       date: msg.date,
       time: new Date(msg.date).toLocaleTimeString([], {
@@ -366,6 +372,21 @@ exports.addNewMessage = async (msg) => {
     return formatedMessage;
   } catch (err) {
     console.log(err);
+  }
+};
+
+const checkIfThereIsMoreMessagensForThisDate = async (chatId) => {
+  try {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const messages = await Message.findOne({
+      chatId,
+      date: { $gte: today, $lt: new Date(today.getTime() + 86400000) },
+    });
+    return !!messages;
+  } catch (err) {
+    console.error("Erro ao verificar mensagens:", err);
+    return false;
   }
 };
 
@@ -385,6 +406,7 @@ exports.findOldestMessages = async (req, res, next) => {
         userId: m.userId.toString(),
         userName: m.userName,
         userImage: m.userImage,
+        firstMessageDay: m.firstMessageDay,
         message: m.message,
         date: m.date,
         time: new Date(m.date).toLocaleTimeString([], {

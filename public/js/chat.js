@@ -218,7 +218,6 @@ function createMessageElement(message, userHasChangedByScrooling) {
   hiddenInput.name = "userId";
   hiddenInput.value = message.userId;
 
-  // Organizando a estrutura do DOM
   messageItself.appendChild(messageText);
   messageItself.appendChild(messageTime);
 
@@ -238,7 +237,6 @@ function createMessageElement(message, userHasChangedByScrooling) {
 
   return messageLine;
 }
-
 function renderMessages(formattedMessages, renderTop = false) {
   const scrollTopBefore = messageContainer.scrollTop;
   const scrollHeightBefore = messageContainer.scrollHeight;
@@ -261,29 +259,14 @@ function renderMessages(formattedMessages, renderTop = false) {
       }
     }
 
-    //-------------------------------------------------
-    console.log(typeof formattedMessages[I].date);
-    dateHasChanged =
-      I === 0 ||
-      formatToDDMMYYYY(formattedMessages[I].date) !==
-        formatToDDMMYYYY(formattedMessages[I - 1].date);
-
-    if (dateHasChanged) {
-      const dateLine = document.createElement("div");
-      dateLine.classList.add("message_date");
-
-      const dateItself = document.createElement("p");
-      dateItself.textContent = formatToDDMMYYYY(formattedMessages[I].date);
-      dateLine.appendChild(dateItself);
-
-      messageContainer.appendChild(dateLine);
-    }
-    //-------------------------------------------------
+    if (!renderTop) printDate(formattedMessages[I], renderTop);
 
     messageElement = createMessageElement(formattedMessages[I], userHasChanged);
 
     if (!renderTop) messageContainer.appendChild(messageElement);
     else messageContainer.prepend(messageElement);
+
+    if (renderTop) printDate(formattedMessages[I], renderTop);
   }
 
   const scrollHeightAfter = messageContainer.scrollHeight;
@@ -293,6 +276,60 @@ function renderMessages(formattedMessages, renderTop = false) {
   if (!renderTop) messageContainer.scrollTop = messageContainer.scrollHeight;
   else {
     messageContainer.scrollTop = scrollTopBefore + diff;
+  }
+}
+
+function printDate(message, renderTop) {
+  if (message.firstMessageDay) {
+    const dateLine = document.createElement("div");
+    dateLine.classList.add("message_date");
+
+    const dateItself = document.createElement("p");
+    dateItself.textContent = formatDateToPrint(message.date);
+    dateLine.appendChild(dateItself);
+
+    if (!renderTop) {
+      messageContainer.appendChild(dateLine);
+    } else {
+      messageContainer.prepend(dateLine);
+    }
+  }
+}
+
+function formatToDDMMYYYY(dateString) {
+  const dateObject = new Date(dateString);
+  const day = dateObject.getDate();
+  const month = dateObject.getMonth() + 1; // Os meses começam do zero
+  const year = dateObject.getFullYear();
+
+  // Adiciona um zero à esquerda se for necessário
+  const formattedDay = day < 10 ? `0${day}` : day;
+  const formattedMonth = month < 10 ? `0${month}` : month;
+
+  return `${formattedDay}/${formattedMonth}/${year}`;
+}
+
+function formatDateToPrint(dateString) {
+  console.log("date string ", dateString);
+  const messageDate = new Date(dateString);
+  console.log("message date ", messageDate);
+  const currentDate = new Date();
+  console.log("current date ", currentDate);
+
+  if (
+    messageDate.getDate() === currentDate.getDate() &&
+    messageDate.getMonth() === currentDate.getMonth() &&
+    messageDate.getFullYear() === currentDate.getFullYear()
+  ) {
+    return "Today";
+  } else if (
+    messageDate.getDate() === currentDate.getDate() - 1 &&
+    messageDate.getMonth() === currentDate.getMonth() &&
+    messageDate.getFullYear() === currentDate.getFullYear()
+  ) {
+    return "Yesterday";
+  } else {
+    return formatToDDMMYYYY(dateString);
   }
 }
 
@@ -337,25 +374,3 @@ messageContainer.addEventListener("scroll", () => {
 });
 
 //-------------------------------------------------------------------
-
-function formatToDDMMYYYY(dateString) {
-  const dateObject = new Date(dateString);
-  const day = dateObject.getDate();
-  const month = dateObject.getMonth() + 1; // Os meses começam do zero
-  const year = dateObject.getFullYear();
-
-  // Adiciona um zero à esquerda se for necessário
-  const formattedDay = day < 10 ? `0${day}` : day;
-  const formattedMonth = month < 10 ? `0${month}` : month;
-
-  return `${formattedDay}/${formattedMonth}/${year}`;
-}
-
-function formatDateToPrint(dateString) {
-  const messageDate = new Date(dateString);
-  const currentDate = new Date();
-
-  if (messageDate === currentDate) return "Today";
-  else if (messageDate === currentDate - 1) return "Yesterday";
-  else return message.toString();
-}
