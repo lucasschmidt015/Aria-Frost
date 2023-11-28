@@ -96,6 +96,7 @@ exports.postEditChat = (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
+    console.log("entrou nos errors");
     return res.render("chat/newChat", {
       pageTitle: "New Chat",
       errorMessage: errors.array()[0].msg,
@@ -219,28 +220,36 @@ exports.getNewMember = (req, res, next) => {
     });
 };
 
-exports.getDeleteChat = (req, res, next) => {
+exports.getDeleteChat = async (req, res, next) => {
   const chatId = req.params.chatId;
 
-  findChat
-    .findChatByChatIdAndUserId(chatId, req.user, false)
-    .then((chat) => {
-      return chat.deleteOne({ _id: chat.id });
-    })
-    .then((success) => {
-      const dedBin = path.resolve(__dirname, "..");
+  try {
+    const chat = await findChat.findChatByChatIdAndUserId(
+      chatId,
+      req.user,
+      false
+    );
+    const chatDeleted = await chat.deleteOne({ _id: chat.id });
+
+    await Message.deleteMany({ chatId: chatId });
+
+    const dedBin = path.resolve(__dirname, "..");
+
+    if (chatDeleted.imageName) {
       fs.unlink(
-        path.join(dedBin, "public", "chat_img", success.imageName),
+        path.join(dedBin, "public", "chat_img", chatDeleted.imageName),
         (err) => {
           return res.redirect("/");
         }
       );
-    })
-    .catch((err) => {
-      const error = new Error(err);
-      error.httpStatusCode = 500;
-      next(error);
-    });
+    } else {
+      return res.redirect("/");
+    }
+  } catch (err) {
+    const error = new Error(err);
+    error.httpStatusCode = 500;
+    next(error);
+  }
 };
 
 exports.getLeaveServer = (req, res, next) => {

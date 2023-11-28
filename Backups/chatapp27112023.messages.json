@@ -1,0 +1,1406 @@
+[{
+  "_id": {
+    "$oid": "65636c73af4159a5dff91b1f"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": true,
+  "message": "Bom dia Clã",
+  "date": {
+    "$date": "2023-11-26T16:04:03.360Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65636c79af4159a5dff91b23"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "Como vcs estão?",
+  "date": {
+    "$date": "2023-11-26T16:04:08.992Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65636cbdaf4159a5dff91b31"
+  },
+  "userId": {
+    "$oid": "6550e5f328a762a2ce62d709"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Silvio Santos",
+  "userImage": "2023-11-14T00-58-14.646Z-Silvio.jpeg",
+  "firstMessageDay": false,
+  "message": "Eu estou bem ",
+  "date": {
+    "$date": "2023-11-26T16:05:17.694Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65636cc3af4159a5dff91b35"
+  },
+  "userId": {
+    "$oid": "6550e5f328a762a2ce62d709"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Silvio Santos",
+  "userImage": "2023-11-14T00-58-14.646Z-Silvio.jpeg",
+  "firstMessageDay": false,
+  "message": "Obrigado por peguntar",
+  "date": {
+    "$date": "2023-11-26T16:05:23.702Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65636ccaaf4159a5dff91b3c"
+  },
+  "userId": {
+    "$oid": "6550e5f328a762a2ce62d709"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Silvio Santos",
+  "userImage": "2023-11-14T00-58-14.646Z-Silvio.jpeg",
+  "firstMessageDay": false,
+  "message": "E vcs como estão?",
+  "date": {
+    "$date": "2023-11-26T16:05:30.646Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65636cd9af4159a5dff91b40"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "Por aqui tudo bem Tio Silvio",
+  "date": {
+    "$date": "2023-11-26T16:05:45.454Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65636cdfaf4159a5dff91b44"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "😁",
+  "date": {
+    "$date": "2023-11-26T16:05:51.495Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65636cf3af4159a5dff91b52"
+  },
+  "userId": {
+    "$oid": "654ec819bd0b9da1c8f0a653"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Loid Forger",
+  "userImage": "2023-11-14T00-56-20.962Z-Spy-x-family-ep-20-Loid-Forger-cover.jpg",
+  "firstMessageDay": false,
+  "message": "Hey vcs",
+  "date": {
+    "$date": "2023-11-26T16:06:11.677Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65636cf8af4159a5dff91b56"
+  },
+  "userId": {
+    "$oid": "654ec819bd0b9da1c8f0a653"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Loid Forger",
+  "userImage": "2023-11-14T00-56-20.962Z-Spy-x-family-ep-20-Loid-Forger-cover.jpg",
+  "firstMessageDay": false,
+  "message": "To bem tbm",
+  "date": {
+    "$date": "2023-11-26T16:06:16.909Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65636d00af4159a5dff91b5a"
+  },
+  "userId": {
+    "$oid": "654ec819bd0b9da1c8f0a653"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Loid Forger",
+  "userImage": "2023-11-14T00-56-20.962Z-Spy-x-family-ep-20-Loid-Forger-cover.jpg",
+  "firstMessageDay": false,
+  "message": "✈️",
+  "date": {
+    "$date": "2023-11-26T16:06:24.237Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65637589af4159a5dff91b5e"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "Viram que o arco de Wano acabou?",
+  "date": {
+    "$date": "2023-11-26T16:42:49.073Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "656375adaf4159a5dff91b62"
+  },
+  "userId": {
+    "$oid": "654ec819bd0b9da1c8f0a653"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Loid Forger",
+  "userImage": "2023-11-14T00-56-20.962Z-Spy-x-family-ep-20-Loid-Forger-cover.jpg",
+  "firstMessageDay": false,
+  "message": "Depois de dois séculos kkkkk",
+  "date": {
+    "$date": "2023-11-26T16:43:25.111Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "656375b8af4159a5dff91b66"
+  },
+  "userId": {
+    "$oid": "654ec819bd0b9da1c8f0a653"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Loid Forger",
+  "userImage": "2023-11-14T00-56-20.962Z-Spy-x-family-ep-20-Loid-Forger-cover.jpg",
+  "firstMessageDay": false,
+  "message": "Mas valeu apena vamos dizer",
+  "date": {
+    "$date": "2023-11-26T16:43:36.622Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "656375bdaf4159a5dff91b6a"
+  },
+  "userId": {
+    "$oid": "6550e5f328a762a2ce62d709"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Silvio Santos",
+  "userImage": "2023-11-14T00-58-14.646Z-Silvio.jpeg",
+  "firstMessageDay": false,
+  "message": "Simmm",
+  "date": {
+    "$date": "2023-11-26T16:43:41.551Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "656375ccaf4159a5dff91b6e"
+  },
+  "userId": {
+    "$oid": "6550e5f328a762a2ce62d709"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Silvio Santos",
+  "userImage": "2023-11-14T00-58-14.646Z-Silvio.jpeg",
+  "firstMessageDay": false,
+  "message": "Foi um dos melhores arcos se não o melhor",
+  "date": {
+    "$date": "2023-11-26T16:43:56.783Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "656375e2af4159a5dff91b72"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "Foi realmente muito bom mesmo",
+  "date": {
+    "$date": "2023-11-26T16:44:18.256Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "656375efaf4159a5dff91b76"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "Mas eu ainda prefiro o arco de guerra dos maiores",
+  "date": {
+    "$date": "2023-11-26T16:44:31.720Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6563761aaf4159a5dff91b7a"
+  },
+  "userId": {
+    "$oid": "654ec819bd0b9da1c8f0a653"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Loid Forger",
+  "userImage": "2023-11-14T00-56-20.962Z-Spy-x-family-ep-20-Loid-Forger-cover.jpg",
+  "firstMessageDay": false,
+  "message": "Verdade, nada supera aquela guerra ",
+  "date": {
+    "$date": "2023-11-26T16:45:14.934Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6563763baf4159a5dff91b7e"
+  },
+  "userId": {
+    "$oid": "654ec819bd0b9da1c8f0a653"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Loid Forger",
+  "userImage": "2023-11-14T00-56-20.962Z-Spy-x-family-ep-20-Loid-Forger-cover.jpg",
+  "firstMessageDay": false,
+  "message": "Altas espectativas para o próximo arco",
+  "date": {
+    "$date": "2023-11-26T16:45:47.621Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65637644af4159a5dff91b82"
+  },
+  "userId": {
+    "$oid": "654ec819bd0b9da1c8f0a653"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Loid Forger",
+  "userImage": "2023-11-14T00-56-20.962Z-Spy-x-family-ep-20-Loid-Forger-cover.jpg",
+  "firstMessageDay": false,
+  "message": "Egg Red correto?",
+  "date": {
+    "$date": "2023-11-26T16:45:56.773Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6563764eaf4159a5dff91b86"
+  },
+  "userId": {
+    "$oid": "6550e5f328a762a2ce62d709"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Silvio Santos",
+  "userImage": "2023-11-14T00-58-14.646Z-Silvio.jpeg",
+  "firstMessageDay": false,
+  "message": "Isso mesmo",
+  "date": {
+    "$date": "2023-11-26T16:46:06.701Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6563765faf4159a5dff91b8a"
+  },
+  "userId": {
+    "$oid": "6550e5f328a762a2ce62d709"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Silvio Santos",
+  "userImage": "2023-11-14T00-58-14.646Z-Silvio.jpeg",
+  "firstMessageDay": false,
+  "message": "Nesse arco vamos ver a luta do Garp com o Aokiji",
+  "date": {
+    "$date": "2023-11-26T16:46:23.157Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6563766baf4159a5dff91b8e"
+  },
+  "userId": {
+    "$oid": "6550e5f328a762a2ce62d709"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Silvio Santos",
+  "userImage": "2023-11-14T00-58-14.646Z-Silvio.jpeg",
+  "firstMessageDay": false,
+  "message": "Também Law vs Barba Negra",
+  "date": {
+    "$date": "2023-11-26T16:46:35.197Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65637677af4159a5dff91b92"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "Olha o spoiler ae",
+  "date": {
+    "$date": "2023-11-26T16:46:47.878Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6563767faf4159a5dff91b96"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "Não li o mangá ainda ",
+  "date": {
+    "$date": "2023-11-26T16:46:55.942Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6563768daf4159a5dff91b9a"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "🤬",
+  "date": {
+    "$date": "2023-11-26T16:47:09.862Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65637696af4159a5dff91b9e"
+  },
+  "userId": {
+    "$oid": "6550e5f328a762a2ce62d709"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Silvio Santos",
+  "userImage": "2023-11-14T00-58-14.646Z-Silvio.jpeg",
+  "firstMessageDay": false,
+  "message": "ooooh",
+  "date": {
+    "$date": "2023-11-26T16:47:18.381Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "656376a1af4159a5dff91ba2"
+  },
+  "userId": {
+    "$oid": "6550e5f328a762a2ce62d709"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Silvio Santos",
+  "userImage": "2023-11-14T00-58-14.646Z-Silvio.jpeg",
+  "firstMessageDay": false,
+  "message": "Minhas desculpas ",
+  "date": {
+    "$date": "2023-11-26T16:47:29.389Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "656376a9af4159a5dff91ba6"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "De boas",
+  "date": {
+    "$date": "2023-11-26T16:47:37.574Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "656376adaf4159a5dff91baa"
+  },
+  "userId": {
+    "$oid": "654ec819bd0b9da1c8f0a653"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Loid Forger",
+  "userImage": "2023-11-14T00-56-20.962Z-Spy-x-family-ep-20-Loid-Forger-cover.jpg",
+  "firstMessageDay": false,
+  "message": "kkkkkk",
+  "date": {
+    "$date": "2023-11-26T16:47:41.428Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "656376b1af4159a5dff91bae"
+  },
+  "userId": {
+    "$oid": "654ec819bd0b9da1c8f0a653"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Loid Forger",
+  "userImage": "2023-11-14T00-56-20.962Z-Spy-x-family-ep-20-Loid-Forger-cover.jpg",
+  "firstMessageDay": false,
+  "message": "Acontece acontece ",
+  "date": {
+    "$date": "2023-11-26T16:47:45.820Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "656376d2af4159a5dff91bb2"
+  },
+  "userId": {
+    "$oid": "654ec819bd0b9da1c8f0a653"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Loid Forger",
+  "userImage": "2023-11-14T00-56-20.962Z-Spy-x-family-ep-20-Loid-Forger-cover.jpg",
+  "firstMessageDay": false,
+  "message": "O Vegapunk vai finalmente ser revelado nesse arco né?",
+  "date": {
+    "$date": "2023-11-26T16:48:18.684Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "656376deaf4159a5dff91bb6"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "Até tu brutos",
+  "date": {
+    "$date": "2023-11-26T16:48:30.845Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "656376e6af4159a5dff91bba"
+  },
+  "userId": {
+    "$oid": "654ec819bd0b9da1c8f0a653"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Loid Forger",
+  "userImage": "2023-11-14T00-56-20.962Z-Spy-x-family-ep-20-Loid-Forger-cover.jpg",
+  "firstMessageDay": false,
+  "message": "kkkkkkkkkkkkk",
+  "date": {
+    "$date": "2023-11-26T16:48:38.068Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "656376f3af4159a5dff91bbe"
+  },
+  "userId": {
+    "$oid": "6550e5f328a762a2ce62d709"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Silvio Santos",
+  "userImage": "2023-11-14T00-58-14.646Z-Silvio.jpeg",
+  "firstMessageDay": false,
+  "message": "Isso mesmo kkkkkkk",
+  "date": {
+    "$date": "2023-11-26T16:48:51.068Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65637702af4159a5dff91bc2"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "Vou ler o mangá, já volto",
+  "date": {
+    "$date": "2023-11-26T16:49:06.861Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65637fd66aa038ad44e2a40c"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "655111dfcbac146b1241c88a"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": true,
+  "message": "test",
+  "date": {
+    "$date": "2023-11-26T17:26:46.376Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65637fda6aa038ad44e2a410"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "655111dfcbac146b1241c88a"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "asdad",
+  "date": {
+    "$date": "2023-11-26T17:26:50.216Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65637fdb6aa038ad44e2a414"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "655111dfcbac146b1241c88a"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "asfasfg",
+  "date": {
+    "$date": "2023-11-26T17:26:51.263Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65637fdc6aa038ad44e2a418"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "655111dfcbac146b1241c88a"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "gasdfga",
+  "date": {
+    "$date": "2023-11-26T17:26:52.192Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65637fdd6aa038ad44e2a41c"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "655111dfcbac146b1241c88a"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "sadgas",
+  "date": {
+    "$date": "2023-11-26T17:26:53.096Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "656387f8f6684db18c548920"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "fffff",
+  "date": {
+    "$date": "2023-11-26T18:01:28.206Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6563880ff6684db18c548924"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "KKKKK",
+  "date": {
+    "$date": "2023-11-26T18:01:51.295Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "656388948e0f6d9871250985"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "65511231cbac146b1241c8a7"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": true,
+  "message": "ffff",
+  "date": {
+    "$date": "2023-11-26T18:04:04.780Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65638900512576bae19bc705"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "655111cfcbac146b1241c884"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "Still working?",
+  "date": {
+    "$date": "2023-11-26T18:05:52.275Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65638e2d0efee852236a9fb3"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": true,
+  "message": "Aaa",
+  "date": {
+    "$date": "2023-11-26T18:27:57.448Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "656528f7f8d661247b5d879d"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": true,
+  "message": "So the yesterday message works",
+  "date": {
+    "$date": "2023-11-27T23:40:39.071Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652922f8d661247b5d87ab"
+  },
+  "userId": {
+    "$oid": "6550e5f328a762a2ce62d709"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Silvio Santos",
+  "userImage": "2023-11-14T00-58-14.646Z-Silvio.jpeg",
+  "firstMessageDay": false,
+  "message": "Yep",
+  "date": {
+    "$date": "2023-11-27T23:41:22.866Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652929f8d661247b5d87af"
+  },
+  "userId": {
+    "$oid": "6550e5f328a762a2ce62d709"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Silvio Santos",
+  "userImage": "2023-11-14T00-58-14.646Z-Silvio.jpeg",
+  "firstMessageDay": false,
+  "message": "Looks great ",
+  "date": {
+    "$date": "2023-11-27T23:41:28.976Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6565293df8d661247b5d87b3"
+  },
+  "userId": {
+    "$oid": "6550e5f328a762a2ce62d709"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Silvio Santos",
+  "userImage": "2023-11-14T00-58-14.646Z-Silvio.jpeg",
+  "firstMessageDay": false,
+  "message": "Did you implemented it yesterday? ",
+  "date": {
+    "$date": "2023-11-27T23:41:49.544Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652948f8d661247b5d87b7"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "That's it",
+  "date": {
+    "$date": "2023-11-27T23:42:00.746Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "656529aa8fc7af6948f2e88c"
+  },
+  "userId": {
+    "$oid": "654ec819bd0b9da1c8f0a653"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Loid Forger",
+  "userImage": "2023-11-14T00-56-20.962Z-Spy-x-family-ep-20-Loid-Forger-cover.jpg",
+  "firstMessageDay": false,
+  "message": "Lets see if it is going to work tomorrow too",
+  "date": {
+    "$date": "2023-11-27T23:43:38.798Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "656529eb8fc7af6948f2e890"
+  },
+  "userId": {
+    "$oid": "654ec819bd0b9da1c8f0a653"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Loid Forger",
+  "userImage": "2023-11-14T00-56-20.962Z-Spy-x-family-ep-20-Loid-Forger-cover.jpg",
+  "firstMessageDay": false,
+  "message": "Then it should show the correct date, using the pattern '25/02/2023', right?",
+  "date": {
+    "$date": "2023-11-27T23:44:43.597Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652a068fc7af6948f2e89a"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "Yes, you're right",
+  "date": {
+    "$date": "2023-11-27T23:45:10.182Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652a168fc7af6948f2e8a4"
+  },
+  "userId": {
+    "$oid": "6550e5f328a762a2ce62d709"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Silvio Santos",
+  "userImage": "2023-11-14T00-58-14.646Z-Silvio.jpeg",
+  "firstMessageDay": false,
+  "message": "Understood",
+  "date": {
+    "$date": "2023-11-27T23:45:25.989Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652a238fc7af6948f2e8a8"
+  },
+  "userId": {
+    "$oid": "6550e5f328a762a2ce62d709"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Silvio Santos",
+  "userImage": "2023-11-14T00-58-14.646Z-Silvio.jpeg",
+  "firstMessageDay": false,
+  "message": "Good lucky to you",
+  "date": {
+    "$date": "2023-11-27T23:45:39.901Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652a368fc7af6948f2e8ac"
+  },
+  "userId": {
+    "$oid": "6550e5f328a762a2ce62d709"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Silvio Santos",
+  "userImage": "2023-11-14T00-58-14.646Z-Silvio.jpeg",
+  "firstMessageDay": false,
+  "message": "But I belive it'll work preaty fine",
+  "date": {
+    "$date": "2023-11-27T23:45:58.693Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652a3e8fc7af6948f2e8b0"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "Me too",
+  "date": {
+    "$date": "2023-11-27T23:46:06.222Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652a4b8fc7af6948f2e8b4"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "I'm not afrade",
+  "date": {
+    "$date": "2023-11-27T23:46:19.558Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652a6c8fc7af6948f2e8b8"
+  },
+  "userId": {
+    "$oid": "654ec819bd0b9da1c8f0a653"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Loid Forger",
+  "userImage": "2023-11-14T00-56-20.962Z-Spy-x-family-ep-20-Loid-Forger-cover.jpg",
+  "firstMessageDay": false,
+  "message": "Yeee, it certelly is going to work",
+  "date": {
+    "$date": "2023-11-27T23:46:52.363Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652a998fc7af6948f2e8bc"
+  },
+  "userId": {
+    "$oid": "654ec819bd0b9da1c8f0a653"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Loid Forger",
+  "userImage": "2023-11-14T00-56-20.962Z-Spy-x-family-ep-20-Loid-Forger-cover.jpg",
+  "firstMessageDay": false,
+  "message": "Sey, what more do you want to implement?",
+  "date": {
+    "$date": "2023-11-27T23:47:37.635Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652aac8fc7af6948f2e8c0"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "A lot of things",
+  "date": {
+    "$date": "2023-11-27T23:47:56.181Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652ac18fc7af6948f2e8c4"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "Like the possibility of send images",
+  "date": {
+    "$date": "2023-11-27T23:48:17.908Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652ace8fc7af6948f2e8c8"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "and have private chats between two users ",
+  "date": {
+    "$date": "2023-11-27T23:48:30.012Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652aff8fc7af6948f2e8cc"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "Maybe the possibility of add friends and interact with them",
+  "date": {
+    "$date": "2023-11-27T23:49:19.259Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652b088fc7af6948f2e8d0"
+  },
+  "userId": {
+    "$oid": "6550e5f328a762a2ce62d709"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Silvio Santos",
+  "userImage": "2023-11-14T00-58-14.646Z-Silvio.jpeg",
+  "firstMessageDay": false,
+  "message": "Sonds great ",
+  "date": {
+    "$date": "2023-11-27T23:49:28.530Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652b228fc7af6948f2e8d4"
+  },
+  "userId": {
+    "$oid": "6550e5f328a762a2ce62d709"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Silvio Santos",
+  "userImage": "2023-11-14T00-58-14.646Z-Silvio.jpeg",
+  "firstMessageDay": false,
+  "message": "I'm excited to see everything working",
+  "date": {
+    "$date": "2023-11-27T23:49:54.242Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652b338fc7af6948f2e8d8"
+  },
+  "userId": {
+    "$oid": "654ec819bd0b9da1c8f0a653"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Loid Forger",
+  "userImage": "2023-11-14T00-56-20.962Z-Spy-x-family-ep-20-Loid-Forger-cover.jpg",
+  "firstMessageDay": false,
+  "message": "Me too",
+  "date": {
+    "$date": "2023-11-27T23:50:11.465Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652b448fc7af6948f2e8dc"
+  },
+  "userId": {
+    "$oid": "654ec819bd0b9da1c8f0a653"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Loid Forger",
+  "userImage": "2023-11-14T00-56-20.962Z-Spy-x-family-ep-20-Loid-Forger-cover.jpg",
+  "firstMessageDay": false,
+  "message": "It'll be very usefull ",
+  "date": {
+    "$date": "2023-11-27T23:50:27.977Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652b658fc7af6948f2e8e0"
+  },
+  "userId": {
+    "$oid": "654ec819bd0b9da1c8f0a653"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Loid Forger",
+  "userImage": "2023-11-14T00-56-20.962Z-Spy-x-family-ep-20-Loid-Forger-cover.jpg",
+  "firstMessageDay": false,
+  "message": "Please do your best",
+  "date": {
+    "$date": "2023-11-27T23:51:01.088Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652b6a8fc7af6948f2e8e4"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "I will",
+  "date": {
+    "$date": "2023-11-27T23:51:06.642Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652b718fc7af6948f2e8e8"
+  },
+  "userId": {
+    "$oid": "6542f797bf3a3d0836163366"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Lucas Schmidt",
+  "userImage": "2023-11-14T00-54-28.609Z-IMG_20231010_221358.jpg",
+  "firstMessageDay": false,
+  "message": "😁",
+  "date": {
+    "$date": "2023-11-27T23:51:13.042Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652b788fc7af6948f2e8ec"
+  },
+  "userId": {
+    "$oid": "654ec819bd0b9da1c8f0a653"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Loid Forger",
+  "userImage": "2023-11-14T00-56-20.962Z-Spy-x-family-ep-20-Loid-Forger-cover.jpg",
+  "firstMessageDay": false,
+  "message": "😁",
+  "date": {
+    "$date": "2023-11-27T23:51:20.016Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65652b7b8fc7af6948f2e8f0"
+  },
+  "userId": {
+    "$oid": "6550e5f328a762a2ce62d709"
+  },
+  "chatId": {
+    "$oid": "65638de90efee852236a9f75"
+  },
+  "userName": "Silvio Santos",
+  "userImage": "2023-11-14T00-58-14.646Z-Silvio.jpeg",
+  "firstMessageDay": false,
+  "message": "😁",
+  "date": {
+    "$date": "2023-11-27T23:51:23.561Z"
+  },
+  "__v": 0
+}]

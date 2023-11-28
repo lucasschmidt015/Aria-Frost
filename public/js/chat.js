@@ -90,11 +90,8 @@ function makeAdmin(userId, chatId, csrfToken) {
 
   fetch("http://localhost:3000/makeAdmin", requestOptions)
     .then((response) => {
-      showToast("Admin updated");
-
-      setTimeout(() => {
-        window.location.href = response.url;
-      }, 5000);
+      defineToastMessage("Admin updated");
+      window.location.href = response.url;
     })
     .catch((err) => {});
 }
@@ -105,6 +102,13 @@ function makeAdmin(userId, chatId, csrfToken) {
 window.onload = () => {
   const chatMessages = document.getElementById("chatMessages");
   renderMessages(JSON.parse(chatMessages.value));
+
+  const toastMessage = localStorage.getItem("MekaAdmSuccessMessage");
+
+  if (toastMessage) {
+    localStorage.removeItem("MekaAdmSuccessMessage");
+    showToast(toastMessage);
+  }
 };
 
 //--------------------------------------------------------------------------------
@@ -134,7 +138,6 @@ function onPressEnter(event) {
 }
 
 function emitMessage() {
-  showToast("test");
   if (messageInput.value !== "") {
     socket.emit("chat message", {
       userId: userId.value,
@@ -150,6 +153,10 @@ function emitMessage() {
 socket.on("chat message", (msg) => {
   renderMessages([msg]);
 });
+
+function defineToastMessage(message) {
+  localStorage.setItem("MekaAdmSuccessMessage", message);
+}
 
 function showToast(message) {
   ///<--------
