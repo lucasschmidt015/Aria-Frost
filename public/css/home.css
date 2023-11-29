@@ -1,29 +1,41 @@
-.chat_line {
+.chats_container {
     width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 40px;
+    height: 95%;
+    padding: 20px;
+    /* background-color: yellow; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    box-sizing: border-box;
+    overflow: auto;
 }
 
-.home_item {
+.button_container {
     width: 150px;
-    height: 150px;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button_area {
     background-color: #DEDEDE;
-    border-radius: 15px;
+    width: 100%;
+    height: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: ease 0.3s;
+    border-radius: 15px;
 }
 
-.home_item p {
-    margin-top: 185px;
-    position: absolute;
+.button_container p {
+    width: 180px;
+    margin-top: 5px;
+    text-align: center;
 }
 
-.home_item:hover {
+.button_container:hover {
     transform: scale(1.02);
 }
 

@@ -4,27 +4,22 @@
 
 <body>
     <%- include('includes/navbar.ejs') %>
-    <div class="full_screen_container">
-        <div class="chat_line">
-            <% let count = 1 %>
+    <div class="full_screen_container_center">
+        <div class="chats_container">
 
-            <div class="home_item">
-                <a href="/newChat"><img class="newChatButton" src="/src/plus.png"></a>
+            <div class="button_container">
+                <div class="button_area">
+                    <a href="/newChat"><img class="newChatButton" src="/src/plus.png"></a>
+                </div>
             </div>
 
             <% chats.forEach(chat => { %>
-                <div class="home_item">
-                    <a href="/chat/<%= chat._id %>"><img class="newChatButton" src="<%= chat.imageName ? '/chat_img/' + chat.imageName : '/src/default_img.jpg' %>"></a>
+                <div class="button_container">
+                    <div class="button_area">
+                        <a href="/chat/<%= chat._id %>"><img class="newChatButton" src="<%= chat.imageName ? '/chat_img/' + chat.imageName : '/src/default_img.jpg' %>"></a>
+                    </div>
                     <p><%= chat.name %></p>
                 </div>
-
-                <% if (count === 4) { %>
-                    </div>
-                    <div class="chat_line">
-                    <% count = -1 %>
-                <% } %>
-
-                <% count += 1; %>
             <% }) %>
         </div>
     </div>
