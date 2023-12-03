@@ -17,9 +17,9 @@
                         <a id="manege-people-button">Manege People</a>
                         <% if (isOwner) { %>
                             <a href="/editChat/<%= chat._id %>">Edit Chat</a>
-                            <a href="/deleteChat/<%= chat._id %>">Delete Chat</a>
+                            <a onclick="deleteChat('<%= loggedUser %>', '<%= chat._id %>', '<%= csrfToken %>')">Delete Chat</a>
                         <% } %>
-                        <a href="/getLeaveServer/<%= chat._id %>">Leave Chat</a>
+                        <a onclick="leaveServer('<%= loggedUser %>', '<%= chat._id %>', '<%= csrfToken %>')">Leave Chat</a>
                     </div>
                 </div>
                 

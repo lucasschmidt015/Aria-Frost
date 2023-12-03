@@ -40,11 +40,11 @@ router.post(
 
 router.get("/chat/:chatId", isAuth, isAccountValid, chatController.getChat);
 
-router.get(
-  "/deleteChat/:chatId",
+router.post(
+  "/deleteChat",
   isAuth,
   isAccountValid,
-  chatController.getDeleteChat
+  chatController.postDeleteChat
 );
 
 router.get(
@@ -54,11 +54,11 @@ router.get(
   chatController.getNewMember
 );
 
-router.get(
-  "/getLeaveServer/:chatId",
+router.post(
+  "/postLeaveServer",
   isAuth,
   isAccountValid,
-  chatController.getLeaveServer
+  chatController.postLeaveServer
 );
 
 router.post("/makeAdmin", isAuth, isAccountValid, chatController.postMakeAdmin);

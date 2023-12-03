@@ -45,7 +45,14 @@ copyLinkBtn.addEventListener("click", async () => {
 
 //Remove People--------------------------------------------------------------------
 
-function removePeople(userId, chatId, csrfToken) {
+async function removePeople(userId, chatId, csrfToken) {
+  const confirmed = await showConfirmPrompt(
+    "This action cannot be undone",
+    "Are you sure you want to remove this user from this chat?"
+  );
+
+  if (!confirmed) return;
+
   const body = new URLSearchParams({
     userId,
     chatId,
@@ -74,7 +81,14 @@ function removePeople(userId, chatId, csrfToken) {
 //---------------------------------------------------------------------------------
 
 //Make Admin-----------------------------------------------------------------------
-function makeAdmin(userId, chatId, csrfToken) {
+async function makeAdmin(userId, chatId, csrfToken) {
+  const confirmed = await showConfirmPrompt(
+    "This action cannot be undone",
+    "Are you sure you want to change the admin of this chat?"
+  );
+
+  if (!confirmed) return;
+
   const body = new URLSearchParams({
     userId,
     chatId,
@@ -95,6 +109,69 @@ function makeAdmin(userId, chatId, csrfToken) {
     })
     .catch((err) => {});
 }
+
+async function deleteChat(userId, chatId, csrfToken) {
+  const confirmed = await showConfirmPrompt(
+    "This action cannot be undone",
+    "Are you sure you want to delete this chat?"
+  );
+
+  if (!confirmed) return;
+
+  const body = new URLSearchParams({
+    userId,
+    chatId,
+    _csrf: csrfToken,
+  });
+
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: body,
+  };
+
+  fetch("http://localhost:3000/deleteChat", requestOptions)
+    .then((response) => {
+      window.location.href = response.url;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+async function leaveServer(userId, chatId, csrfToken) {
+  const confirmed = await showConfirmPrompt(
+    "This action cannot be undone",
+    "Are you sure you want to leave this chat?"
+  );
+
+  if (!confirmed) return;
+
+  const body = new URLSearchParams({
+    userId,
+    chatId,
+    _csrf: csrfToken,
+  });
+
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: body,
+  };
+
+  fetch("http://localhost:3000/postLeaveServer", requestOptions)
+    .then((response) => {
+      window.location.href = response.url;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 //--------------------------------------------------------------------------------
 
 //onLoad-----------------------------------------------------------------------
@@ -103,12 +180,7 @@ window.onload = () => {
   const chatMessages = document.getElementById("chatMessages");
   renderMessages(JSON.parse(chatMessages.value));
 
-  const toastMessage = localStorage.getItem("MekaAdmSuccessMessage");
-
-  if (toastMessage) {
-    localStorage.removeItem("MekaAdmSuccessMessage");
-    showToast(toastMessage);
-  }
+  showToastMessage();
 };
 
 //--------------------------------------------------------------------------------
@@ -154,34 +226,6 @@ socket.on("chat message", (msg) => {
   renderMessages([msg]);
 });
 
-function defineToastMessage(message) {
-  localStorage.setItem("MekaAdmSuccessMessage", message);
-}
-
-function showToast(message) {
-  ///<--------
-  // Swal.fire({
-  //   position: "top-end",
-  //   icon: "success",
-  //   title: "Your work has been saved",
-  //   showConfirmButton: false,
-  //   timer: 1500,
-  // });
-
-  Toastify({
-    text: message,
-    className: "success",
-    backgroundColor: "#4CAF50",
-    style: {
-      borderRadius: "7px",
-    },
-    duration: 5000,
-    close: true,
-    gravity: "top",
-    position: "right",
-    stopOnFocus: true,
-  }).showToast();
-}
 //--------------------------------------------------------------------------------
 
 function checkIftheUserChanges(userId) {
@@ -414,3 +458,53 @@ messageContainer.addEventListener("scroll", () => {
 });
 
 //-------------------------------------------------------------------
+
+async function showConfirmPrompt(title = "", message = "") {
+  const result = await Swal.fire({
+    title: title,
+    text: message,
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Ok",
+  });
+
+  if (result.isConfirmed) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function defineToastMessage(message) {
+  localStorage.setItem("MekaAdmSuccessMessage", message);
+}
+
+function clearToastMessage() {
+  localStorage.removeItem("MekaAdmSuccessMessage");
+}
+
+function showToastMessage() {
+  const toastMessage = localStorage.getItem("MekaAdmSuccessMessage");
+  if (toastMessage) {
+    showToast(toastMessage);
+    clearToastMessage();
+  }
+}
+
+function showToast(message) {
+  Toastify({
+    text: message,
+    className: "success",
+    backgroundColor: "#4CAF50",
+    style: {
+      borderRadius: "7px",
+    },
+    duration: 5000,
+    close: true,
+    gravity: "top",
+    position: "right",
+    stopOnFocus: true,
+  }).showToast();
+}

@@ -220,8 +220,9 @@ exports.getNewMember = (req, res, next) => {
     });
 };
 
-exports.getDeleteChat = async (req, res, next) => {
-  const chatId = req.params.chatId;
+exports.postDeleteChat = async (req, res, next) => {
+  const chatId = req.body.chatId;
+  const userId = req.body.userId;
 
   try {
     const chat = await findChat.findChatByChatIdAndUserId(
@@ -252,8 +253,8 @@ exports.getDeleteChat = async (req, res, next) => {
   }
 };
 
-exports.getLeaveServer = (req, res, next) => {
-  const chatId = req.params.chatId;
+exports.postLeaveServer = (req, res, next) => {
+  const chatId = req.body.chatId;
   const user = req.user;
 
   findChat
