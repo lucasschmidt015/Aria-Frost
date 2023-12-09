@@ -178,14 +178,19 @@ html, body {
     .nav_bar_left {
         padding-left: 15px;
     }
+
+    .nav_bar_left span a{
+        font-size: 28px;
+    }
+    
     
     .nav_bar_right {
         padding-right: 15px;
     }
     
     .nav_bar img {
-        width: 20px;
-        margin-left: 15px;
+        width: 40px;
+        margin-left: 5px;
     }
     
     .nav_bar img:hover {
@@ -194,7 +199,43 @@ html, body {
     
     .nav_bar label {
         color: #FFF;
+        font-size: 14px;
         margin-left: 15px;
-        margin-right: 20px;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    .nav_bar_left {
+        padding-left: 10px;
+    }
+
+    .nav_bar_left span a{
+        font-size: 25px;
+    }
+    
+    
+    .nav_bar_right {
+        padding-right: 15px;
+    }
+    
+    .nav_bar img {
+        width: 40px;
+        margin-left: 5px;
+    }
+    
+    .nav_bar img:hover {
+        transform: scale(1.08);
+    }
+
+    #about_btn{
+        display: none;
+    }
+    
+    .nav_bar label {
+        color: #FFF;
+        font-size: 13px;
+        margin-left: 10px;
+        margin-right: 0px;
     }
 }
