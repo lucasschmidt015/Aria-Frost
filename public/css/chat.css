@@ -364,6 +364,14 @@
     justify-content: center;
 }
 
+.line-invite-container {
+    width: 100%;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .invite-container label{
     margin-bottom: 10px;
 }
@@ -384,8 +392,116 @@
     background-image: linear-gradient(to right, #3f77e5, #9b1cd8);
     color: #FFF;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .invite-container div button:hover {
     transform: scale(1.03);
+}
+
+
+@media (max-width: 768px) {
+
+    .chat-options-container {
+        height: 47px;
+        margin-top: 9px;
+    }
+
+    .chat-options {
+        width: 84%;
+        padding: 0 10px;
+    }
+
+    .chat-options-left-side img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .chat-options-left-side span {
+        font-size: 12px;
+    }
+
+    .dropdown-chat {
+        margin-right: 0px;
+        justify-content: end;
+    }
+
+    .chat_container {
+        height: calc(100% - 60px - 60px);
+    }
+
+    .chat_input input {
+        width: 80%;
+        height: 22px;
+    }
+
+    .message_area_right {
+        margin: 5px;
+        max-width: 78%;
+    }
+
+    .chat_input button {
+        width: 13%;
+    }
+
+    .message_area_left {
+        max-width: 78%;
+        margin-left: 0px;
+    }
+
+    .message_line_left img {
+        display: none;
+    }
+
+    .advance_line_left {
+        display: none;
+    }
+
+    .members-container h1 {
+        font-size: 18px;
+    }
+
+    .manege-people-conteiner {
+        width: 251px;
+        height: 482px;
+    }
+
+    .member-line {
+        width: 93%;
+        height: 31px;
+    }
+
+    .member-line-left img {
+        margin-right: 7px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .member-line-left p { 
+        font-size: 12px;
+    }
+    .member-line-right button {
+        width: 84px;
+        height: 31px;
+        margin-right: 2px;
+        margin-left: 5px;
+        font-size: 11px;
+    }
+
+    .invite-container label {
+        font-size: 12px;
+    }
+
+    .invite-container div button {
+        padding: 5px 10px;
+        font-size: 11px;
+    }
+
+    #close-btn {
+        width: 22px;
+        height: 22px;
+        margin: 5px 10px;
+    }
 }
