@@ -22,7 +22,7 @@ exports.findChatByChatIdAndUserId = async (
     });
     return chat;
   } catch (err) {
-    throw err;
+    return undefined;
   }
 };
 
@@ -38,6 +38,6 @@ exports.findAllChatsByUserId = async (user) => {
     });
     return chats;
   } catch (err) {
-    throw err;
+    return undefined;
   }
 };

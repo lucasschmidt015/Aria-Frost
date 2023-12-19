@@ -110,6 +110,12 @@ async function makeAdmin(userId, chatId, csrfToken) {
     .catch((err) => {});
 }
 
+/**
+ * This function is going to delete the current chat and all its messages
+ * @param {ObjectId} userId
+ * @param {ObjectId} chatId
+ * @param {String} csrfToken
+ */
 async function deleteChat(userId, chatId, csrfToken) {
   const confirmed = await showConfirmPrompt(
     "This action cannot be undone",
@@ -132,13 +138,18 @@ async function deleteChat(userId, chatId, csrfToken) {
     body: body,
   };
 
-  fetch("http://localhost:3000/deleteChat", requestOptions)
-    .then((response) => {
-      window.location.href = response.url;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  const response = await fetch(
+    "http://localhost:3000/deleteChat",
+    requestOptions
+  );
+
+  if (response.status == 422) {
+    const responseData = await response.json();
+    defineToastMessage(responseData.message, false);
+    return window.location.reload();
+  }
+
+  window.location.href = response.url;
 }
 
 async function leaveServer(userId, chatId, csrfToken) {
@@ -163,13 +174,18 @@ async function leaveServer(userId, chatId, csrfToken) {
     body: body,
   };
 
-  fetch("http://localhost:3000/postLeaveServer", requestOptions)
-    .then((response) => {
-      window.location.href = response.url;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  const response = await fetch(
+    "http://localhost:3000/postLeaveServer",
+    requestOptions
+  );
+
+  if (response.status == 422) {
+    const responseData = await response.json();
+    defineToastMessage(responseData.message, false);
+    return window.location.reload();
+  }
+
+  window.location.href = response.url;
 }
 
 //--------------------------------------------------------------------------------
@@ -477,27 +493,38 @@ async function showConfirmPrompt(title = "", message = "") {
   }
 }
 
-function defineToastMessage(message) {
-  localStorage.setItem("MekaAdmSuccessMessage", message);
-}
-
-function clearToastMessage() {
-  localStorage.removeItem("MekaAdmSuccessMessage");
-}
-
-function showToastMessage() {
-  const toastMessage = localStorage.getItem("MekaAdmSuccessMessage");
-  if (toastMessage) {
-    showToast(toastMessage);
-    clearToastMessage();
+function defineToastMessage(message, success = true) {
+  if (success) {
+    localStorage.setItem("successMessage", message);
+  } else {
+    localStorage.setItem("failureMessage", message);
   }
 }
 
-function showToast(message) {
+function clearToastMessage() {
+  localStorage.removeItem("successMessage");
+  localStorage.removeItem("failureMessage");
+}
+
+function showToastMessage() {
+  const successMessage = localStorage.getItem("successMessage");
+  if (successMessage) {
+    showToast(successMessage);
+    return clearToastMessage();
+  }
+
+  const failureMessage = localStorage.getItem("failureMessage");
+  if (failureMessage) {
+    showToast(failureMessage, false);
+    return clearToastMessage();
+  }
+}
+
+function showToast(message, success = true) {
   Toastify({
     text: message,
     className: "success",
-    backgroundColor: "#4CAF50",
+    backgroundColor: success ? "#4CAF50" : "#e19e05",
     style: {
       borderRadius: "7px",
     },

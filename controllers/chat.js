@@ -230,6 +230,13 @@ exports.postDeleteChat = async (req, res, next) => {
       req.user,
       false
     );
+
+    if (!chat) {
+      return res
+        .status(422)
+        .json({ message: "Chat don't found, please try again later." });
+    }
+
     const chatDeleted = await chat.deleteOne({ _id: chat.id });
 
     await Message.deleteMany({ chatId: chatId });
@@ -253,36 +260,38 @@ exports.postDeleteChat = async (req, res, next) => {
   }
 };
 
-exports.postLeaveServer = (req, res, next) => {
+exports.postLeaveServer = async (req, res, next) => {
   const chatId = req.body.chatId;
   const user = req.user;
 
-  findChat
-    .findChatByChatIdAndUserId(chatId, user)
-    .then((chat) => {
-      if (!chat) {
-        throw new Error("Chat not found");
-      }
+  try {
+    const chat = await findChat.findChatByChatIdAndUserId(chatId, user);
 
-      if (chat.ownerId.toString() === user._id.toString()) {
-        //In future updates, consider incorporating a notification message at this point to inform the user that they cannot leave a server for which they are the owner.
-        return res.redirect(`/chat/${chatId}`);
-      }
+    if (!chat) {
+      return res
+        .status(422)
+        .json({ message: "Chat don't found, please try again later." });
+    }
 
-      const userChats = user.chats;
-      const updatedUserChat = userChats.filter(
-        (c) => c._id.toString() !== chatId.toString()
-      );
-      user.chats = updatedUserChat;
-      user.save().then((success) => {
-        return res.redirect("/");
-      });
-    })
-    .catch((err) => {
-      const error = new Error(err);
-      error.httpStatusCode = 500;
-      next(error);
-    });
+    if (chat.ownerId.toString() === user._id.toString()) {
+      return res
+        .status(422)
+        .json({ message: "You can not leave this server, you are the admin." });
+    }
+
+    const userChats = user.chats;
+    const updatedUserChat = userChats.filter(
+      (c) => c._id.toString() !== chatId.toString()
+    );
+    user.chats = updatedUserChat;
+    await user.save();
+
+    return res.redirect("/");
+  } catch (err) {
+    const error = new Error(err);
+    error.httpStatusCode = 500;
+    next(error);
+  }
 };
 
 exports.postMakeAdmin = (req, res, next) => {
