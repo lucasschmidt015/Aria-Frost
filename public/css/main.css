@@ -97,7 +97,7 @@ html, body {
 }
 
 .full_screen_container_center{
-    width: calc(100% - 250px);
+    width: 100%;
     height: calc(100% - 60px);
     padding: 20px;
     box-sizing: border-box;
@@ -172,59 +172,6 @@ html, body {
 .custom-file-upload input {
     display: none; /* Oculta o input do tipo file */
 }
-
-.friends-bar {
-    width: 238px;
-    height: calc(100% - 90px);
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-    background-color: #E3E3E3;
-    padding: 15px;
-}
-
-.friends-bar_user {
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-}
-
-.friends-bar_user img{
-    width: 42.5px;
-    height: 42.5px;
-    border-radius: 50%;
-    margin-right: 10px;
-    margin-bottom: 5px;
-}
-
-.friends-bar_options_container {
-    margin-top: 5px;
-    width: 100%;
-    height: 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-}
-
-.friends-bar_options_container input{
-    width: 190px;
-    border-radius: 10px;
-    border: none;
-    padding: 5px;
-    background-color: #D9D9D9;
-}
-
-.friends-bar_options_container img{
-    width: 20px;
-    height: 20px;
-}
-
 
 @media (max-width: 768px) {
     .nav_bar_left {
