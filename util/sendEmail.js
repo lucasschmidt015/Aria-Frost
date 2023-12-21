@@ -1,23 +1,25 @@
-const nodemailer = require('nodemailer');
-const { parsed: { USER_EMAIL_SERVER, PASS_EMAIL_SERVER } } = require('dotenv').config();
+const nodemailer = require("nodemailer");
+const {
+  parsed: { USER_EMAIL_SERVER, PASS_EMAIL_SERVER },
+} = require("dotenv").config();
 
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: {
-        user: USER_EMAIL_SERVER,
-        pass: PASS_EMAIL_SERVER,
-    }
+  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  auth: {
+    user: USER_EMAIL_SERVER,
+    pass: PASS_EMAIL_SERVER,
+  },
 });
 
 exports.sendNewUserEmail = (user) => {
-    transporter.sendMail({
-        to: user.email,
-        from: `ChatApp <${USER_EMAIL_SERVER}>`,
-        subject: 'Confirm your account.',
-        html: `
+  transporter.sendMail({
+    to: user.email,
+    from: `ChatApp <${USER_EMAIL_SERVER}>`,
+    subject: "Confirm your account.",
+    html: `
             <!DOCTYPE html>
             <html lang="en">
             <head>
@@ -39,6 +41,6 @@ exports.sendNewUserEmail = (user) => {
                 </table>
             </body>
             </html>
-        `
-    })
-}
+        `,
+  });
+};

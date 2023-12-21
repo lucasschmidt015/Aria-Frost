@@ -52,7 +52,8 @@ exports.postNewChat = (req, res, next) => {
   newChat
     .save()
     .then((success) => {
-      res.redirect("/");
+      console.log(success);
+      res.redirect(`/chat/${success._id}`);
     })
     .catch((err) => {
       const throwError = new Error(err);
