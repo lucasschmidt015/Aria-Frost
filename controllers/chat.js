@@ -193,6 +193,22 @@ exports.getChat = async (req, res, next) => {
   }
 };
 
+exports.getChatData = async (req, res, next) => {
+  const chatId = req.params.chatId;
+  try {
+    const response = await findChat.findChatByChatIdAndUserId(chatId, req.user);
+    if (!response) {
+      return res.json({ error: "Chat not found" });
+    }
+
+    return res.json(response);
+  } catch (err) {
+    const error = new Error(err);
+    error.httpStatusCode = 500;
+    return next(error);
+  }
+};
+
 exports.getNewMember = (req, res, next) => {
   const chatId = req.params.chatId;
 

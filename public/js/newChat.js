@@ -39,3 +39,17 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = response.url;
   });
 });
+
+window.onload = async () => {
+  const chatId = document.getElementById("chatIdNewChat").value;
+
+  if (chatId !== "") {
+    const response = await fetch(
+      `http://localhost:3000/chat/chat-data/${chatId}`
+    );
+    const responseData = await response.json();
+    if (!responseData.error && responseData.imageName != null) {
+      img.src = `/chat_img/${responseData.imageName}`;
+    }
+  }
+};

@@ -40,6 +40,13 @@ router.post(
 
 router.get("/chat/:chatId", isAuth, isAccountValid, chatController.getChat);
 
+router.get(
+  "/chat/chat-data/:chatId",
+  isAuth,
+  isAccountValid,
+  chatController.getChatData
+);
+
 router.post(
   "/deleteChat",
   isAuth,
