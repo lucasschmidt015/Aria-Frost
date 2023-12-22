@@ -52,7 +52,6 @@ exports.postNewChat = (req, res, next) => {
   newChat
     .save()
     .then((success) => {
-      console.log(success);
       res.redirect(`/chat/${success._id}`);
     })
     .catch((err) => {
@@ -97,7 +96,6 @@ exports.postEditChat = (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    console.log("entrou nos errors");
     return res.render("chat/newChat", {
       pageTitle: "New Chat",
       errorMessage: errors.array()[0].msg,

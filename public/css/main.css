@@ -108,23 +108,24 @@ html, body {
 
 .form_center_container {
     height: 600px;
-    background-color: #D9D9D9;
+    background-color: #EEE;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     padding: 40px 30px;
+    box-shadow: 0px 0px 2px 2px #09090921;
 }
 
 .form_center_container input{
     width: 500px;
     border: 0;
-    height: 40px;
+    height: 70px;
     padding: 0 15px 0 15px;
     border-radius: 5px;
 }
 
 .form_center_container textarea {  
-    height: 70px;
+    height: 90px;
     border: none;
     border-radius: 5px;
     padding: 12px 15px 0 15px;
@@ -136,6 +137,7 @@ html, body {
 
 .form_center_container label {
     margin-top: 35px;
+    margin-bottom: 10px;
 }
 
 .form_center_container button{
@@ -149,11 +151,6 @@ html, body {
     margin-top: 75px;
     cursor: pointer;
 }
-
-.custom-file-upload{
-    margin-top: 15px;
-}
-
 
 .custom-file-upload label {
     width: 500px;
@@ -202,9 +199,54 @@ html, body {
         margin-left: 15px;
         margin-right: 10px;
     }
+
+    .form_center_container {
+        height: 400px;
+        padding: 20px 20px;
+        box-shadow: 0px 0px 2px 2px #09090921;
+    }
+
+    .form_center_container h2{
+        font-size: 18px;
+    }
+
+    .form_center_container label {
+        margin-top: 10px;
+        margin-bottom: 5px;
+        font-size: 13px;
+    }
+
+    .form_center_container input{
+        width: 400px;
+        height: 90px;
+        padding: 10px 15px 10px 15px;
+        font-size: 12px;
+    }
+    
+    .form_center_container textarea {  
+        height: 90px;
+        padding: 12px 15px 0 15px;
+        font-size: 12px;
+    }
+
+    .form_center_container button{
+        padding: 10px;
+        font-size: 13px;
+        margin-top: 50px;
+    }
+    
+    .custom-file-upload label {
+        width: 400px;
+        height: 80px;
+    }
+    
+    .custom-file-upload label img {
+        width: 430px;
+        height: 100px;
+    }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
     .nav_bar_left {
         padding-left: 10px;
     }
@@ -236,5 +278,40 @@ html, body {
         font-size: 13px;
         margin-left: 10px;
         margin-right: 0px;
+    }
+
+    .form_center_container {
+        height: 300px;
+        padding: 20px 20px;
+    }
+
+    .form_center_container input{
+        width: 200px;
+        height: 60px;
+        padding: 7px 15px 7px 15px;
+        font-size: 12px;
+    }
+    
+    .form_center_container textarea {  
+        height: 80px;
+        padding: 12px 15px 0 15px;
+        font-size: 12px;
+    }
+
+    
+    .custom-file-upload label {
+        width: 200px;
+        height: 40px;
+    }
+    
+    .custom-file-upload label img {
+        width: 230px;
+        height: 60px;
+    }
+
+    .form_center_container button{
+        padding: 10px;
+        font-size: 13px;
+        margin-top: 20px;
     }
 }
