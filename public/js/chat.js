@@ -2,6 +2,8 @@
 const optionsBtn = document.getElementById("options-btn");
 const dropdownMenu = document.getElementById("dropdown-menu");
 
+const baseURL = document.baseURI;
+
 let isImageRotated = false;
 
 optionsBtn.addEventListener("click", () => {
@@ -67,7 +69,7 @@ async function removePeople(userId, chatId, csrfToken) {
     body: body,
   };
 
-  fetch("http://localhost:3000/removeMember", requestOptions)
+  fetch(`${baseURL}removeMember`, requestOptions)
     .then((response) => {
       const userDiv = document.getElementById("user_" + userId);
       if (userDiv) {
@@ -102,7 +104,7 @@ async function makeAdmin(userId, chatId, csrfToken) {
     body: body,
   };
 
-  fetch("http://localhost:3000/makeAdmin", requestOptions)
+  fetch(`${baseURL}makeAdmin`, requestOptions)
     .then((response) => {
       defineToastMessage("Admin updated");
       window.location.href = response.url;
@@ -139,7 +141,7 @@ async function deleteChat(userId, chatId, csrfToken) {
   };
 
   const response = await fetch(
-    "http://localhost:3000/deleteChat",
+    `${baseURL}deleteChat`,
     requestOptions
   );
 
@@ -175,7 +177,7 @@ async function leaveServer(userId, chatId, csrfToken) {
   };
 
   const response = await fetch(
-    "http://localhost:3000/postLeaveServer",
+    `${baseURL}postLeaveServer`,
     requestOptions
   );
 
@@ -456,7 +458,7 @@ messageContainer.addEventListener("scroll", () => {
       body: body,
     };
 
-    fetch("http://localhost:3000/findOldestMessages", requestOptions)
+    fetch(`${baseURL}findOldestMessages`, requestOptions)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Something went wrong");

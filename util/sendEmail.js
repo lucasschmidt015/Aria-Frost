@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 const {
-  parsed: { USER_EMAIL_SERVER, PASS_EMAIL_SERVER },
+  parsed: { USER_EMAIL_SERVER, PASS_EMAIL_SERVER, BASE_URL },
 } = require("dotenv").config();
 
 const transporter = nodemailer.createTransport({
@@ -34,7 +34,7 @@ exports.sendNewUserEmail = (user) => {
                             <h1 style="color: #333;">Account Confirmation</h1>
                             <p style="font-size: 16px; color: #555; margin: 20px 0;">Hello ${user.name}</p>
                             <p style="font-size: 16px; color: #555; margin: 20px 0;">Thank you for creating an account with us. To activate your account, please click the confirmation link below:</p>
-                            <a href="http://localhost:3000/confirmAccount/${user.verificationToken}" style="background-color: #007BFF; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-weight: bold;">Confirm Your Account</a>
+                            <a href="${BASE_URL}/confirmAccount/${user.verificationToken}" style="background-color: #007BFF; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-weight: bold;">Confirm Your Account</a>
                             <p style="font-size: 14px; color: #555;">If you didn't create this account, please ignore this email.</p>
                         </td>
                     </tr>

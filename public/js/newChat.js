@@ -1,6 +1,8 @@
 const fileInput = document.getElementById("chatImage");
 const img = document.getElementById("imgChat");
 
+const baseURL = document.baseURI;
+
 fileInput.addEventListener("change", () => {
   const file = fileInput.files[0];
 
@@ -45,7 +47,7 @@ window.onload = async () => {
 
   if (chatId !== "") {
     const response = await fetch(
-      `http://localhost:3000/chat/chat-data/${chatId}`
+      `${baseURL}chat/chat-data/${chatId}`
     );
     const responseData = await response.json();
     if (!responseData.error && responseData.imageName != null) {

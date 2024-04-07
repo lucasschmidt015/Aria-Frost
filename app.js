@@ -9,7 +9,7 @@ const csrf = require("csurf");
 const http = require("http");
 const socketIO = require("socket.io");
 const {
-  parsed: { MONGODB_URI },
+  parsed: { MONGODB_URI, BASE_URL },
 } = require("dotenv").config();
 
 //Middlewares
@@ -92,6 +92,7 @@ app.use(csrfProtection);
 app.use((req, res, next) => {
   res.locals.csrfToken = req.csrfToken();
   res.locals.isLoggedIn = req.session.isLoggedIn;
+  res.locals.baseURL = BASE_URL;
   if (req.session.user) {
     res.locals.userName = req.session.user.name;
     res.locals.userId = req.session.user._id;
